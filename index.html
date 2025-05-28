@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palaash Dwivedi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="#" onclick="showSection('home')">Palaash Dwivedi</a>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="#" onclick="showSection('home')" class="active">Home</a>
+          </li>
+          <li><a href="#" onclick="showSection('about')">About</a></li>
+          <li><a href="#" onclick="showSection('projects')">Projects</a></li>
+          <li><a href="#" onclick="showSection('skills')">Skills</a></li>
+          <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+        <div class="mobile-menu" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Palaash Dwivedi</h1>
+            <div class="subtitle">Game Developer</div>
+            <p>
+              Passionate game developer with strong technical foundations and a
+              deep interest in gameplay mechanics. Currently in my second year
+              of college, building innovative gaming experiences with Unreal
+              Engine and creative problem-solving.
+            </p>
+            <div class="cta-buttons">
+              <a
+                href="#"
+                onclick="showSection('projects')"
+                class="btn btn-primary"
+                >View My Work</a
+              >
+              <a
+                href="#"
+                onclick="showSection('contact')"
+                class="btn btn-secondary"
+                >Get In Touch</a
+              >
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="floating-card">
+              <h3 style="margin-bottom: 1rem; color: var(--accent-color)">
+                Core Skills
+              </h3>
+              <div class="skills-preview">
+                <div class="skill-item">🎮 Unreal Engine</div>
+                <div class="skill-item">💻 C++ & Blueprints</div>
+                <div class="skill-item">🤖 AI Scripting</div>
+                <div class="skill-item">🎨 Custom Animations</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section">
+      <div class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-image">
+            <div class="profile-placeholder"></div>
+          </div>
+          <div class="about-text">
+            <h3>Crafting Engaging Game Experiences</h3>
+            <p>
+              I'm a passionate game developer currently in my second year of
+              college, with a strong focus on creating original and mechanically
+              rich gaming experiences. My journey in game development has been
+              driven by a fascination with gameplay systems and the challenge of
+              building mechanics that feel both engaging and unique.
+            </p>
+
+            <p>
+              My core strength lies in building gameplay systems that emphasize
+              tight controls, innovative mechanics, and player engagement. I
+              work extensively with Unreal Engine, handling everything from
+              scripting and level design to creating custom animations that
+              enhance gameplay feedback and visual style.
+            </p>
+
+            <p>
+              What sets me apart is my hands-on approach to learning and my
+              ability to quickly adapt to new tools and programming languages. I
+              believe in learning through practice, which is why I've built
+              several game prototypes that showcase different aspects of game
+              development, from challenging platformers to innovative FPS
+              mechanics.
+            </p>
+
+            <p>
+              When I'm not coding or designing levels, I'm exploring new game
+              mechanics, studying what makes games feel great to play, and
+              always looking for that next creative challenge that will push my
+              skills further.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="page-section">
+      <div class="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3 class="project-title">Ancestry of Time</h3>
+            <p class="project-description">
+              A first-person shooter built in Unreal Engine where time moves
+              only when you do—inspired by Superhot. Play as a kidnapped heir
+              with time-bending powers, progressing through stages to unlock
+              abilities and escape a secret organization. This 3-level prototype
+              showcases core time-based mechanics and ability progression.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Unreal Engine 5</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Blueprints</span>
+              <span class="tech-tag">FPS Mechanics</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://palaash-dwivedi.itch.io/ancestry-of-time"
+                target="_blank"
+                >Play Game</a
+              >
+              <a href="https://youtu.be/FKvfHX1ShG4" target="_blank"
+                >Watch Trailer</a
+              >
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Unfair Platformer</h3>
+            <p class="project-description">
+              A challenging platformer created in Unity with C#, featuring
+              deceptive mechanics and booby traps that keep players on their
+              toes. This project highlights my skills in gameplay systems and
+              level design, focusing on creating memorable and challenging
+              experiences through clever level construction.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Unity</span>
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">Level Design</span>
+              <span class="tech-tag">Platformer</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://palaash-dwivedi.itch.io/unfair-platformer"
+                target="_blank"
+                >Play Game</a
+              >
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Traversal Mechanic Demo</h3>
+            <p class="project-description">
+              A gameplay prototype exploring physics-based traversal mechanics
+              in Unreal Engine 5.5.4. Features a unique charging system where
+              holding the left mouse button charges a launcher—force and
+              direction depend on player position and charge time. Includes
+              custom hand animations created in-engine.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Unreal Engine 5.5.4</span>
+              <span class="tech-tag">Blueprints</span>
+              <span class="tech-tag">Physics</span>
+              <span class="tech-tag">Custom Animations</span>
+            </div>
+            <div class="project-links">
+              <a href="https://youtu.be/79n36LSAytY" target="_blank"
+                >Watch Demo</a
+              >
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3 class="project-title">Mob Control</h3>
+            <p class="project-description">
+              A hyper-casual crowd control game built in Unreal Engine using
+              C++. Players defend their village from waves of incoming enemies
+              with tactile shooting mechanics, challenging AI, and strategic
+              enemy spawns. Designed for mobile with intuitive joystick-based UI
+              focusing on fast-paced survival gameplay.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Unreal Engine</span>
+              <span class="tech-tag">C++</span>
+              <span class="tech-tag">Mobile Game</span>
+              <span class="tech-tag">AI Programming</span>
+            </div>
+            <div class="project-links">
+              <a href="#" onclick="alert('Coming soon to mobile platforms!')"
+                >Coming Soon</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="page-section">
+      <div class="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-categories">
+          <div class="skill-category">
+            <h3>🎮 Game Development</h3>
+            <ul class="skill-list">
+              <li>Unreal Engine (Blueprints & C++)</li>
+              <li>Unity with C#</li>
+              <li>AI Scripting & Behavior Trees</li>
+              <li>Custom Animation Systems</li>
+              <li>Level Design & World Building</li>
+              <li>Physics-Based Mechanics</li>
+              <li>Mobile Game Development</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>💻 Programming Languages</h3>
+            <ul class="skill-list">
+              <li>C++ (Advanced)</li>
+              <li>C# (Intermediate)</li>
+              <li>Python (Intermediate)</li>
+              <li>JavaScript (Intermediate)</li>
+              <li>HTML & CSS</li>
+              <li>Object-Oriented Programming</li>
+              <li>Debugging & Optimization</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>🛠️ Development Tools</h3>
+            <ul class="skill-list">
+              <li>Unreal Engine 5</li>
+              <li>Unity Game Engine</li>
+              <li>Visual Studio & VS Code</li>
+              <li>Git Version Control</li>
+              <li>Debugging Tools</li>
+              <li>Performance Profiling</li>
+              <li>Mobile Development SDKs</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>🎨 Design & Soft Skills</h3>
+            <ul class="skill-list">
+              <li>Gameplay System Design</li>
+              <li>Creative Problem Solving</li>
+              <li>Rapid Prototyping</li>
+              <li>Team Collaboration</li>
+              <li>Technical Communication</li>
+              <li>Fast Learning & Adaptability</li>
+              <li>Project Management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section">
+      <div class="contact">
+        <h2 class="section-title">Let's Work Together</h2>
+        <div class="contact-content">
+          <p
+            style="
+              font-size: 1.1rem;
+              color: var(--text-gray);
+              margin-bottom: 2rem;
+            "
+          >
+            I'm always excited to collaborate on innovative game projects or
+            discuss new opportunities in game development. Whether you're
+            looking for a passionate developer or want to chat about game
+            mechanics, I'd love to hear from you!
+          </p>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <h3>📧 Email</h3>
+              <p><a href="mailto:palaashd@gmail.com">palaashd@gmail.com</a></p>
+            </div>
+
+            <div class="contact-item">
+              <h3>💼 LinkedIn</h3>
+              <p>
+                <a
+                  href="https://www.linkedin.com/in/palaashdwivedi/"
+                  target="_blank"
+                  >Connect with me</a
+                >
+              </p>
+            </div>
+
+            <div class="contact-item">
+              <h3>🎮 Itch.io</h3>
+              <p>
+                <a href="https://palaash-dwivedi.itch.io/" target="_blank"
+                  >Play my games</a
+                >
+              </p>
+            </div>
+
+            <div class="contact-item">
+              <h3>📺 YouTube</h3>
+              <p>
+                <a
+                  href="https://www.youtube.com/@PalaashDwivedi-i8b"
+                  target="_blank"
+                  >Watch my demos</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="script.js"></script>
+</html>
