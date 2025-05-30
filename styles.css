@@ -295,7 +295,7 @@ nav.scrolled {
   transition: max-height 0.4s ease, opacity 0.3s ease;
   font-size: 13px;
   margin-top: 0.5rem;
-  color: #555;
+  color: #9f9e9e;
 }
 
 /* Reveal when open */
