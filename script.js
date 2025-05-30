@@ -307,3 +307,15 @@ function addThemeToggle() {
 
 // Initialize theme toggle
 addThemeToggle();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const skillItems = document.querySelectorAll(".skill-item");
+
+  skillItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      item.classList.toggle("open");
+      const isOpen = item.classList.contains("open");
+      item.setAttribute("aria-expanded", isOpen);
+    });
+  });
+});
