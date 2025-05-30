@@ -20,6 +20,9 @@
           <li><a href="#" onclick="showSection('about')">About</a></li>
           <li><a href="#" onclick="showSection('projects')">Projects</a></li>
           <li><a href="#" onclick="showSection('skills')">Skills</a></li>
+          <li>
+            <a href="#" onclick="showSection('certificates')">Certificates</a>
+          </li>
           <li><a href="#" onclick="showSection('contact')">Contact</a></li>
         </ul>
         <div class="mobile-menu" onclick="toggleMobileMenu()">
@@ -367,6 +370,106 @@
               <li>Project Management</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="page-section">
+      <div class="certificates">
+        <h2 class="section-title">Certificates & Achievements</h2>
+        <div class="certificates-grid">
+          <div class="certificate-card" onclick="openModal('cert1')">
+            <img
+              src="Images/Certificates/UE5BluePrints1.jpg"
+              alt="Certificate 1"
+              class="certificate-image"
+            />
+
+            <h3 class="certificate-title">
+              Unreal Engine 5 (UE5): Blueprints for Beginners
+            </h3>
+            <p class="certificate-issuer">Udemy - Pixel Helmet</p>
+            <p class="certificate-date">2024</p>
+            <p class="certificate-description">
+              Introduction to Unreal Engine 5's Blueprint system. Covers
+              foundational visual scripting concepts including variables,
+              functions, conditionals, and event-driven design in a game
+              development context.
+            </p>
+          </div>
+
+          <div class="certificate-card" onclick="openModal('cert2')">
+            <img
+              src="Images/Certificates/UE5ActionAdventure.jpg"
+              alt="Certificate 2"
+              class="certificate-image"
+            />
+
+            <h3 class="certificate-title">
+              Unreal Engine 5: Action Adventure Game Development Course
+            </h3>
+            <p class="certificate-issuer">Udemy - GameDev.tv</p>
+            <p class="certificate-date">2024</p>
+            <p class="certificate-description">
+              Hands-on course focused on building an action-adventure game in
+              Unreal Engine 5. Covers character movement, combat systems,
+              animation blueprints, and environment setup using Blueprints.
+            </p>
+          </div>
+
+          <div class="certificate-card" onclick="openModal('cert3')">
+            <img
+              src="Images/Certificates/CppBeginner.jpg"
+              alt="Certificate 3"
+              class="certificate-image"
+            />
+
+            <h3 class="certificate-title">
+              Beginning C++ Programming – From Beginner to Beyond
+            </h3>
+            <p class="certificate-issuer">
+              Udemy - Tim Buchalka's Learn Programming Academy
+            </p>
+            <p class="certificate-date">2025</p>
+            <p class="certificate-description">
+              A deep dive into C++ from fundamentals to advanced topics,
+              covering object-oriented programming, pointers, memory management,
+              and best practices—ideal for aspiring game programmers and system
+              developers.
+            </p>
+          </div>
+
+          <div class="certificate-card" onclick="openModal('cert4')">
+            <img
+              src="Images/Certificates/UE5Cpp.jpg"
+              alt="Certificate 4"
+              class="certificate-image"
+            />
+
+            <h3 class="certificate-title">
+              Unreal Engine 5 C++ Developer: Learn C++ & Make Video Games
+            </h3>
+            <p class="certificate-issuer">Udemy - GameDev.tv</p>
+            <p class="certificate-date">2025</p>
+            <p class="certificate-description">
+              Focused on developing games using C++ in Unreal Engine 5. Covers
+              core programming concepts, game loop logic, class structure, and
+              integrating gameplay systems directly with the engine’s C++ API.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate Modal -->
+      <div
+        id="certificateModal"
+        class="certificate-modal"
+        onclick="closeModal()"
+      >
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <span class="modal-close" onclick="closeModal()">&times;</span>
+          <img id="modalImage" src="" alt="Certificate" class="modal-image" />
         </div>
       </div>
     </section>

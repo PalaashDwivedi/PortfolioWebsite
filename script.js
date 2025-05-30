@@ -1,3 +1,28 @@
+// Certificate modal functionality
+function openModal(certId) {
+  const modal = document.getElementById("certificateModal");
+  const modalImg = document.getElementById("modalImage");
+  const certCard = document.querySelector(`[onclick="openModal('${certId}')"]`);
+  const certImg = certCard.querySelector(".certificate-image");
+
+  modal.classList.add("show");
+  modalImg.src = certImg.src;
+  document.body.style.overflow = "hidden"; // Prevent background scrolling
+}
+
+function closeModal() {
+  const modal = document.getElementById("certificateModal");
+  modal.classList.remove("show");
+  document.body.style.overflow = "auto"; // Re-enable scrolling
+}
+
+// Close modal with Escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+
 // Navigation functionality
 function showSection(sectionName) {
   // Hide all sections
