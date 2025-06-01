@@ -2,7 +2,7 @@
 function openModal(certId) {
   const modal = document.getElementById("certificateModal");
   const modalImg = document.getElementById("modalImage");
-  const certCard = document.querySelector(`[onclick="openModal('${certId}')"]`);
+  const certCard = document.querySelector(`[data-cert-id="${certId}"]`);
   const certImg = certCard.querySelector(".certificate-image");
 
   modal.classList.add("show");
@@ -22,6 +22,15 @@ document.addEventListener("keydown", function (e) {
     closeModal();
   }
 });
+
+// Close modal when clicking outside the modal content
+document
+  .getElementById("certificateModal")
+  .addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
 
 // Navigation functionality
 function showSection(sectionName) {
