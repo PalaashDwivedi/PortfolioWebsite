@@ -392,6 +392,14 @@
     </section>
 
     <!-- Cerficates Section -->
+
+    <div id="certificateModal" class="certificate-modal" onclick="closeModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Certificate" class="modal-image" />
+      </div>
+    </div>
+
     <section id="certificates" class="page-section">
       <div class="certificates">
         <h2 class="section-title">Certificates & Achievements</h2>
@@ -523,16 +531,6 @@
       </div>
 
       <!-- Certificate Modal -->
-      <div
-        id="certificateModal"
-        class="certificate-modal"
-        onclick="closeModal()"
-      >
-        <div class="modal-content" onclick="event.stopPropagation()">
-          <span class="modal-close" onclick="closeModal()">&times;</span>
-          <img id="modalImage" src="" alt="Certificate" class="modal-image" />
-        </div>
-      </div>
     </section>
 
     <!-- Contact Section -->
