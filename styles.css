@@ -116,6 +116,110 @@ nav.scrolled {
   transition: 0.3s;
 }
 
+/* Hamburger transform when active */
+.mobile-menu.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.mobile-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile overlay (full-screen) */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mobile-overlay.show {
+  display: flex;
+}
+
+.mobile-nav {
+  width: 100%;
+  max-width: 360px;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.98),
+    rgba(8, 10, 20, 0.98)
+  );
+  height: 100vh;
+  padding: 3.5rem 1.5rem 1.5rem; /* extra top padding to clear close button */
+  box-shadow: -20px 0 40px rgba(0, 0, 0, 0.6);
+  transform: translateX(0);
+  animation: slideIn 0.32s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center nav contents */
+  position: relative;
+  text-align: center;
+}
+
+.mobile-close {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 2.2rem;
+  cursor: pointer;
+  position: absolute; /* place in top-right without affecting layout */
+  top: 0.6rem;
+  right: 0.75rem;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  width: 100%;
+}
+
+.mobile-nav-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  display: block;
+  width: 100%;
+  text-align: center; /* center link text */
+  border-radius: 8px;
+}
+
+.mobile-nav-links a:hover {
+  color: var(--primary-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* utility */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
 /* Page sections */
 .page-section {
   display: none;
@@ -804,6 +908,18 @@ nav.scrolled {
     display: grid;
     /* grid-template-columns: repeat(1, minmax(260px, 1fr)); */
     gap: 1rem;
+  }
+
+  /* Make mobile nav full-width on smaller screens */
+  .mobile-overlay {
+    justify-content: flex-start; /* anchor panel to left */
+  }
+
+  .mobile-nav {
+    max-width: 100%;
+    width: 100%;
+    padding: 2rem 1rem;
+    box-shadow: none; /* avoid heavy shadow on full-width */
   }
 }
 

@@ -16,10 +16,12 @@ function closeModal() {
   document.body.style.overflow = "auto"; // Re-enable scrolling
 }
 
-// Close modal with Escape key
+// Close modal and mobile menu with Escape key
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     closeModal();
+    // close mobile overlay if open
+    if (document.getElementById("mobileOverlay")) closeMobileMenu();
   }
 });
 
@@ -31,6 +33,16 @@ document
       closeModal();
     }
   });
+
+// Close mobile overlay when clicking outside the nav panel
+const mobileOverlayElem = document.getElementById("mobileOverlay");
+if (mobileOverlayElem) {
+  mobileOverlayElem.addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeMobileMenu();
+    }
+  });
+}
 
 // Navigation functionality
 function showSection(sectionName) {
@@ -71,10 +83,28 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// Mobile menu functionality
+// Mobile menu functionality (overlay)
 function toggleMobileMenu() {
-  const navLinks = document.querySelector(".nav-links");
-  navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
+  const overlay = document.getElementById("mobileOverlay");
+  const burger = document.querySelector(".mobile-menu");
+
+  const isOpen = overlay.classList.contains("show");
+  if (isOpen) {
+    closeMobileMenu();
+    return;
+  }
+
+  overlay.classList.add("show");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden"; // prevent background scroll
+}
+
+function closeMobileMenu() {
+  const overlay = document.getElementById("mobileOverlay");
+  const burger = document.querySelector(".mobile-menu");
+  overlay.classList.remove("show");
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "auto";
 }
 
 // Smooth animations on scroll (for single page sections)

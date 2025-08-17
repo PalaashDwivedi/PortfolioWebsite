@@ -33,6 +33,69 @@
       </div>
     </nav>
 
+    <!-- Mobile overlay navigation (for small screens) -->
+    <div id="mobileOverlay" class="mobile-overlay" aria-hidden="true">
+      <div
+        class="mobile-nav"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mobileNavLabel"
+      >
+        <button
+          class="mobile-close"
+          aria-label="Close menu"
+          onclick="closeMobileMenu()"
+        >
+          &times;
+        </button>
+        <h2 id="mobileNavLabel" class="visually-hidden">Mobile Navigation</h2>
+        <ul class="mobile-nav-links">
+          <li>
+            <a
+              href="#"
+              onclick="smoothSectionTransition('home'); closeMobileMenu();"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="smoothSectionTransition('about'); closeMobileMenu();"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="smoothSectionTransition('projects'); closeMobileMenu();"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="smoothSectionTransition('skills'); closeMobileMenu();"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="smoothSectionTransition('certificates'); closeMobileMenu();"
+              >Certificates</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="smoothSectionTransition('contact'); closeMobileMenu();"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <!-- Home Section -->
     <section id="home" class="page-section active">
       <div class="hero">
