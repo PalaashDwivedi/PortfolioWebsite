@@ -156,7 +156,7 @@ function createParticles() {
     particle.style.cssText = `
                     position: absolute;
                     width: 3px;
-                    height: 3px;
+                    height: 3 px;
                     background: rgba(99, 102, 241, 0.3);
                     border-radius: 50%;
                     animation: float ${
