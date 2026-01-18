@@ -309,29 +309,6 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-// Theme toggle functionality
-const themeToggle = document.getElementById("themeToggle");
-let isDark = true;
-
-themeToggle.addEventListener("click", function () {
-  if (isDark) {
-    document.documentElement.style.setProperty("--dark-bg", "#f8fafc");
-    document.documentElement.style.setProperty("--darker-bg", "#e2e8f0");
-    document.documentElement.style.setProperty("--text-light", "#1e293b");
-    document.documentElement.style.setProperty("--text-gray", "#475569");
-    document.documentElement.style.setProperty("--card-bg", "#ffffff");
-    this.innerHTML = '<i class="fas fa-sun"></i>';
-  } else {
-    document.documentElement.style.setProperty("--dark-bg", "#0f1419");
-    document.documentElement.style.setProperty("--darker-bg", "#020304");
-    document.documentElement.style.setProperty("--text-light", "#f8fafc");
-    document.documentElement.style.setProperty("--text-gray", "#94a3b8");
-    document.documentElement.style.setProperty("--card-bg", "#1a2332");
-    this.innerHTML = '<i class="fas fa-moon"></i>';
-  }
-  isDark = !isDark;
-});
-
 // Skill toggle functionality
 function toggleSkill(element) {
   element.classList.toggle("open");
