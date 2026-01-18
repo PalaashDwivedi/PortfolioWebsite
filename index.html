@@ -1,23 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Palaash Dwivedi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- Navigation -->
     <nav id="navbar">
       <div class="nav-container">
-        <div class="logo">
-          <a href="#" onclick="showSection('home')">Palaash Dwivedi</a>
+        <div class="nav-left">
+          <div class="logo">
+            <a
+              href="#"
+              onclick="showSection('home')"
+              style="text-decoration: none; color: inherit"
+              >Palaash Dwivedi</a
+            >
+          </div>
         </div>
         <ul class="nav-links">
           <li>
             <a href="#" onclick="showSection('home')" class="active">Home</a>
           </li>
           <li><a href="#" onclick="showSection('about')">About Me</a></li>
+          <li><a href="#" onclick="showSection('education')">Education</a></li>
+          <li>
+            <a href="#" onclick="showSection('experience')">Experience</a>
+          </li>
           <li><a href="#" onclick="showSection('projects')">Projects</a></li>
           <li><a href="#" onclick="showSection('skills')">Skills</a></li>
           <li>
@@ -25,6 +40,13 @@
           </li>
           <li><a href="#" onclick="showSection('contact')">Contact</a></li>
         </ul>
+        <button
+          class="theme-toggle-btn"
+          id="themeToggle"
+          aria-label="Toggle theme"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
         <div class="mobile-menu" onclick="toggleMobileMenu()">
           <span></span>
           <span></span>
@@ -33,7 +55,7 @@
       </div>
     </nav>
 
-    <!-- Mobile overlay navigation (for small screens) -->
+    <!-- Mobile overlay navigation -->
     <div id="mobileOverlay" class="mobile-overlay" aria-hidden="true">
       <div
         class="mobile-nav"
@@ -53,42 +75,80 @@
           <li>
             <a
               href="#"
-              onclick="smoothSectionTransition('home'); closeMobileMenu();"
+              onclick="
+                smoothSectionTransition('home');
+                closeMobileMenu();
+              "
               >Home</a
             >
           </li>
           <li>
             <a
               href="#"
-              onclick="smoothSectionTransition('about'); closeMobileMenu();"
+              onclick="
+                smoothSectionTransition('about');
+                closeMobileMenu();
+              "
               >About Me</a
             >
           </li>
           <li>
             <a
               href="#"
-              onclick="smoothSectionTransition('projects'); closeMobileMenu();"
+              onclick="
+                smoothSectionTransition('education');
+                closeMobileMenu();
+              "
+              >Education</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                smoothSectionTransition('experience');
+                closeMobileMenu();
+              "
+              >Experience</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                smoothSectionTransition('projects');
+                closeMobileMenu();
+              "
               >Projects</a
             >
           </li>
           <li>
             <a
               href="#"
-              onclick="smoothSectionTransition('skills'); closeMobileMenu();"
+              onclick="
+                smoothSectionTransition('skills');
+                closeMobileMenu();
+              "
               >Skills</a
             >
           </li>
           <li>
             <a
               href="#"
-              onclick="smoothSectionTransition('certificates'); closeMobileMenu();"
+              onclick="
+                smoothSectionTransition('certificates');
+                closeMobileMenu();
+              "
               >Certificates</a
             >
           </li>
           <li>
             <a
               href="#"
-              onclick="smoothSectionTransition('contact'); closeMobileMenu();"
+              onclick="
+                smoothSectionTransition('contact');
+                closeMobileMenu();
+              "
               >Contact</a
             >
           </li>
@@ -130,13 +190,11 @@
                 Core Skills
               </h3>
               <div class="skills-preview">
-                <div
-                  class="skill-item"
-                  onclick="toggleSkill(this)"
-                  aria-expanded="false"
-                >
+                <div class="skill-item" aria-expanded="false">
                   <div class="skill-header">
-                    <span class="skill-title">🎮 Unreal Engine</span>
+                    <span class="skill-title"
+                      ><i class="fas fa-gamepad"></i> Unreal Engine</span
+                    >
                     <span class="chevron">▼</span>
                   </div>
                   <div class="skill-detail">
@@ -144,14 +202,11 @@
                     Tools & Interface
                   </div>
                 </div>
-
-                <div
-                  class="skill-item"
-                  onclick="toggleSkill(this)"
-                  aria-expanded="false"
-                >
+                <div class="skill-item" aria-expanded="false">
                   <div class="skill-header">
-                    <span class="skill-title">💻 Gameplay Programming</span>
+                    <span class="skill-title"
+                      ><i class="fas fa-code"></i> Gameplay Programming</span
+                    >
                     <span class="chevron">▼</span>
                   </div>
                   <div class="skill-detail">
@@ -159,14 +214,11 @@
                     Interactions
                   </div>
                 </div>
-
-                <div
-                  class="skill-item"
-                  onclick="toggleSkill(this)"
-                  aria-expanded="false"
-                >
+                <div class="skill-item" aria-expanded="false">
                   <div class="skill-header">
-                    <span class="skill-title">🌐 Web Development</span>
+                    <span class="skill-title"
+                      ><i class="fas fa-globe"></i> Web Development</span
+                    >
                     <span class="chevron">▼</span>
                   </div>
                   <div class="skill-detail">
@@ -174,14 +226,11 @@
                     this site from scratch)
                   </div>
                 </div>
-
-                <div
-                  class="skill-item"
-                  onclick="toggleSkill(this)"
-                  aria-expanded="false"
-                >
+                <div class="skill-item" aria-expanded="false">
                   <div class="skill-header">
-                    <span class="skill-title">🐍 Python Scripting</span>
+                    <span class="skill-title"
+                      ><i class="fab fa-python"></i> Python Scripting</span
+                    >
                     <span class="chevron">▼</span>
                   </div>
                   <div class="skill-detail">
@@ -190,13 +239,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="skills-preview">
-                <div class="skill-item">🎮 Unreal Engine</div>
-                <div class="skill-item">💻 Game Programming</div>
-                <div class="skill-item">🌐 Web Development</div>
-                <div class="skill-item">🐍 Python Scripting</div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -244,6 +286,151 @@
               always looking for that next creative challenge that will push my
               skills further.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="page-section">
+      <div class="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-timeline">
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">
+                  Bachelor of Technology in Computer Science
+                </h3>
+                <div class="education-institution">Jain University</div>
+                <div class="education-date">2024 - Present</div>
+              </div>
+            </div>
+            <div class="education-details">
+              <div class="grade-item">
+                <span class="grade-label">Current Year:</span>
+                <span class="grade-value">Second Year</span>
+              </div>
+              <div class="grade-item">
+                <span class="grade-label">CGPA:</span>
+                <span class="grade-value">8.5/10</span>
+              </div>
+              <div class="grade-item">
+                <span class="grade-label">Focus Areas:</span>
+                <span class="grade-value"
+                  >Game Development, Programming, Software Engineering</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">High School (12th Grade)</h3>
+                <div class="education-institution">Delhi Public School</div>
+                <div class="education-date">2023</div>
+              </div>
+            </div>
+            <div class="education-details">
+              <div class="grade-item">
+                <span class="grade-label">Percentage:</span>
+                <span class="grade-value">92%</span>
+              </div>
+              <div class="grade-item">
+                <span class="grade-label">Stream:</span>
+                <span class="grade-value">Science (PCM)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-header">
+              <div>
+                <h3 class="education-title">Secondary School (10th Grade)</h3>
+                <div class="education-institution">Delhi Public School</div>
+                <div class="education-date">2021</div>
+              </div>
+            </div>
+            <div class="education-details">
+              <div class="grade-item">
+                <span class="grade-label">Percentage:</span>
+                <span class="grade-value">95%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="page-section">
+      <div class="work-experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="experience-timeline">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-logo">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <div class="experience-info">
+                <h3 class="experience-title">Game Development Intern</h3>
+                <div class="experience-company">Indie Game Studio</div>
+                <div class="experience-date">June 2025 - August 2025</div>
+              </div>
+            </div>
+            <p class="experience-description">
+              Worked on gameplay mechanics and level design for a 3D platformer
+              project using Unreal Engine.
+            </p>
+            <ul class="experience-responsibilities">
+              <li>
+                Implemented player movement systems and physics-based
+                interactions
+              </li>
+              <li>
+                Created custom animations and integrated them into the game loop
+              </li>
+              <li>
+                Collaborated with artists and designers to optimize game
+                performance
+              </li>
+              <li>
+                Debugged and refined gameplay mechanics based on playtester
+                feedback
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-logo">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="experience-info">
+                <h3 class="experience-title">Freelance Game Developer</h3>
+                <div class="experience-company">Self-Employed</div>
+                <div class="experience-date">2024 - Present</div>
+              </div>
+            </div>
+            <p class="experience-description">
+              Building custom game prototypes and interactive experiences for
+              clients and personal projects.
+            </p>
+            <ul class="experience-responsibilities">
+              <li>
+                Developed multiple game prototypes showcasing different
+                mechanics
+              </li>
+              <li>
+                Created web-based interactive experiences using JavaScript and
+                HTML5
+              </li>
+              <li>
+                Collaborated with clients to turn concepts into playable demos
+              </li>
+              <li>Managed full development cycle from concept to deployment</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -402,58 +589,57 @@
         <h2 class="section-title">Technical Skills</h2>
         <div class="skills-categories">
           <div class="skill-category">
-            <h3>🎮 Game Development</h3>
-            <ul class="skill-list">
-              <li>Unreal Engine (Blueprints & C++)</li>
-              <li>Unity (C#)</li>
-              <li>AI Programming (Behavior Trees & Blackboards)</li>
-              <li>Custom Animation Systems</li>
-              <li>Physics-Based Interactions</li>
-              <li>Level Design & World Building</li>
-              <li>Mobile Game Development</li>
-            </ul>
+            <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+            <div class="skill-card-content">
+              <p>Unreal Engine (Blueprints & C++)</p>
+              <p>Unity (C#)</p>
+              <p>AI Programming (Behavior Trees & Blackboards)</p>
+              <p>Custom Animation Systems</p>
+              <p>Physics-Based Interactions</p>
+              <p>Level Design & World Building</p>
+              <p>Mobile Game Development</p>
+            </div>
           </div>
 
           <div class="skill-category">
-            <h3>💻 Programming Languages</h3>
-            <ul class="skill-list">
-              <li>C++</li>
-              <li>Python</li>
-              <li>JavaScript, HTML & CSS</li>
-              <li>C# (Intermediate)</li>
-              <li>Object-Oriented Programming (OOP)</li>
-              <li>Debugging & Performance Optimization</li>
-            </ul>
+            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+            <div class="skill-card-content">
+              <p>C++</p>
+              <p>Python</p>
+              <p>JavaScript, HTML & CSS</p>
+              <p>C# (Intermediate)</p>
+              <p>Object-Oriented Programming (OOP)</p>
+              <p>Debugging & Performance Optimization</p>
+            </div>
           </div>
 
           <div class="skill-category">
-            <h3>🛠️ Development Tools</h3>
-            <ul class="skill-list">
-              <li>Unreal Engine 5, Unity</li>
-              <li>Visual Studio, VS Code</li>
-              <li>Git & Version Control</li>
-              <li>Debugging & Profiling Tools</li>
-              <li>Mobile Development SDKs</li>
-            </ul>
+            <h3><i class="fas fa-tools"></i> Development Tools</h3>
+            <div class="skill-card-content">
+              <p>Unreal Engine 5, Unity</p>
+              <p>Visual Studio, VS Code</p>
+              <p>Git & Version Control</p>
+              <p>Debugging & Profiling Tools</p>
+              <p>Mobile Development SDKs</p>
+            </div>
           </div>
 
           <div class="skill-category">
-            <h3>🎨 Design & Soft Skills</h3>
-            <ul class="skill-list">
-              <li>Gameplay System Design</li>
-              <li>Creative Problem Solving</li>
-              <li>Rapid Prototyping</li>
-              <li>Team Collaboration & Communication</li>
-              <li>Fast Learning & Adaptability</li>
-              <li>Project & Time Management</li>
-            </ul>
+            <h3><i class="fas fa-palette"></i> Design & Soft Skills</h3>
+            <div class="skill-card-content">
+              <p>Gameplay System Design</p>
+              <p>Creative Problem Solving</p>
+              <p>Rapid Prototyping</p>
+              <p>Team Collaboration & Communication</p>
+              <p>Fast Learning & Adaptability</p>
+              <p>Project & Time Management</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Cerficates Section -->
-
+    <!-- Certificates Section -->
     <div id="certificateModal" class="certificate-modal" onclick="closeModal()">
       <div class="modal-content" onclick="event.stopPropagation()">
         <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -475,18 +661,11 @@
               alt="Certificate 1"
               class="certificate-image"
             />
-
             <h3 class="certificate-title">
               Unreal Engine 5 (UE5): Blueprints for Beginners
             </h3>
             <p class="certificate-issuer">Udemy - Pixel Helmet</p>
             <p class="certificate-date">2024</p>
-            <!-- <p class="certificate-description">
-              Introduction to Unreal Engine 5's Blueprint system. Covers
-              foundational visual scripting concepts including variables,
-              functions, conditionals, and event-driven design in a game
-              development context.
-            </p> -->
           </div>
 
           <div
@@ -499,17 +678,11 @@
               alt="Certificate 2"
               class="certificate-image"
             />
-
             <h3 class="certificate-title">
               Unreal Engine 5: Action Adventure Game Development Course
             </h3>
             <p class="certificate-issuer">Udemy - GameDev.tv</p>
             <p class="certificate-date">2024</p>
-            <!-- <p class="certificate-description">
-              Hands-on course focused on building an action-adventure game in
-              Unreal Engine 5. Covers character movement, combat systems,
-              animation blueprints, and environment setup using Blueprints.
-            </p> -->
           </div>
 
           <div
@@ -522,7 +695,6 @@
               alt="Certificate 3"
               class="certificate-image"
             />
-
             <h3 class="certificate-title">
               Beginning C++ Programming – From Beginner to Beyond
             </h3>
@@ -530,12 +702,6 @@
               Udemy - Tim Buchalka's Learn Programming Academy
             </p>
             <p class="certificate-date">2025</p>
-            <!-- <p class="certificate-description">
-              A deep dive into C++ from fundamentals to advanced topics,
-              covering object-oriented programming, pointers, memory management,
-              and best practices—ideal for aspiring game programmers and system
-              developers.
-            </p> -->
           </div>
 
           <div
@@ -548,17 +714,11 @@
               alt="Certificate 4"
               class="certificate-image"
             />
-
             <h3 class="certificate-title">
               Unreal Engine 5 C++ Developer: Learn C++ & Make Video Games
             </h3>
             <p class="certificate-issuer">Udemy - GameDev.tv</p>
             <p class="certificate-date">2025</p>
-            <!-- <p class="certificate-description">
-              Focused on developing games using C++ in Unreal Engine 5. Covers
-              core programming concepts, game loop logic, class structure, and
-              integrating gameplay systems directly with the engine’s C++ API.
-            </p> -->
           </div>
 
           <div
@@ -571,33 +731,24 @@
               alt="Certificate 5"
               class="certificate-image"
             />
-
             <h3 class="certificate-title">Unreal Engine 2D</h3>
             <p class="certificate-issuer">Udemy - GameDev.tv</p>
             <p class="certificate-date">2026</p>
-            <!-- <p class="certificate-description">
-              Introduction to Unreal Engine 5's Blueprint system. Covers
-              foundational visual scripting concepts including variables,
-              functions, conditionals, and event-driven design in a game
-              development context.
-            </p> -->
           </div>
         </div>
 
-        <!-- Awards -->
         <h2 class="section-title">Awards</h2>
         <div class="certificates-grid">
           <div
             class="certificate-card"
-            data-cert-id="cert5"
-            onclick="openModal('cert5')"
+            data-cert-id="cert6"
+            onclick="openModal('cert6')"
           >
             <img
               src="Images/Certificates/PixelClashCertificate.jpeg"
-              alt="Certificate 5"
+              alt="Certificate 6"
               class="certificate-image"
             />
-
             <h3 class="certificate-title">
               Pixel Clash Game Jam 2025 - Best Game Award
             </h3>
@@ -612,8 +763,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Certificate Modal -->
     </section>
 
     <!-- Contact Section -->
@@ -635,45 +784,53 @@
           </p>
 
           <div class="contact-info">
-            <div class="contact-item">
-              <h3>📧 Email</h3>
-              <p><a href="mailto:palaashd@gmail.com">palaashd@gmail.com</a></p>
-            </div>
+            <a href="mailto:palaashd@gmail.com" class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3>Email</h3>
+              <p>palaashd@gmail.com</p>
+            </a>
 
-            <div class="contact-item">
-              <h3>💼 LinkedIn</h3>
-              <p>
-                <a
-                  href="https://www.linkedin.com/in/palaashdwivedi/"
-                  target="_blank"
-                  >Connect with me</a
-                >
-              </p>
-            </div>
+            <a
+              href="https://www.linkedin.com/in/palaashdwivedi/"
+              target="_blank"
+              class="contact-item"
+            >
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <h3>LinkedIn</h3>
+              <p>Connect with me</p>
+            </a>
 
-            <div class="contact-item">
-              <h3>🎮 Itch.io</h3>
-              <p>
-                <a href="https://palaash-dwivedi.itch.io/" target="_blank"
-                  >Play my games</a
-                >
-              </p>
-            </div>
+            <a
+              href="https://palaash-dwivedi.itch.io/"
+              target="_blank"
+              class="contact-item"
+            >
+              <div class="contact-icon">
+                <i class="fab fa-itch-io"></i>
+              </div>
+              <h3>Itch.io</h3>
+              <p>Play my games</p>
+            </a>
 
-            <div class="contact-item">
-              <h3>📺 YouTube</h3>
-              <p>
-                <a
-                  href="https://www.youtube.com/@PalaashDwivedi-i8b"
-                  target="_blank"
-                  >Watch my demos</a
-                >
-              </p>
-            </div>
+            <a
+              href="https://www.youtube.com/@PalaashDwivedi-i8b"
+              target="_blank"
+              class="contact-item"
+            >
+              <div class="contact-icon">
+                <i class="fab fa-youtube"></i>
+              </div>
+              <h3>YouTube</h3>
+              <p>Watch my demos</p>
+            </a>
           </div>
         </div>
       </div>
     </section>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>
