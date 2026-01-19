@@ -678,7 +678,7 @@ nav.scrolled {
 .project-card {
   background: var(--card-bg);
   border-radius: 15px;
-  padding: 2rem;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   position: relative;
@@ -700,16 +700,26 @@ nav.scrolled {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+.project-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  display: block;
+}
+
 .project-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--text-light);
+  padding: 1.5rem 2rem 0 2rem;
 }
 
 .project-description {
   color: var(--text-gray);
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  padding: 0 2rem;
 }
 
 .project-tech {
@@ -717,6 +727,7 @@ nav.scrolled {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  padding: 0 2rem;
 }
 
 .tech-tag {
@@ -730,6 +741,7 @@ nav.scrolled {
 .project-links {
   display: flex;
   gap: 1rem;
+  padding: 0 2rem 2rem 2rem;
 }
 
 .project-links a {
