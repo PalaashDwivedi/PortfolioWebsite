@@ -336,6 +336,10 @@ nav.scrolled {
   color: white;
 }
 
+.btn-view-my-work {
+  color: #313d5d;
+}
+
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
