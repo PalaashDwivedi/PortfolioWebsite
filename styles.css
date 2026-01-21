@@ -618,6 +618,7 @@ nav.scrolled {
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .company-logo-img {
@@ -671,6 +672,19 @@ nav.scrolled {
   position: absolute;
   left: 0;
   color: var(--accent-color);
+}
+
+.experience-certificate {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.certificate-preview {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
 }
 
 /* Projects Section */
