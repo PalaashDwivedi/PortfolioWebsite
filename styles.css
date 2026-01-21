@@ -400,6 +400,15 @@ nav.scrolled {
 .skill-title {
   font-weight: bold;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .chevron {
