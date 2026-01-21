@@ -333,10 +333,6 @@ nav.scrolled {
 
 .btn-primary {
   background: var(--accent-color);
-  color: white;
-}
-
-.btn-view-my-work {
   color: #313d5d;
 }
 
