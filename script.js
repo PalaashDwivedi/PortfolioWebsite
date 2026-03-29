@@ -12,24 +12,34 @@
    ────────────────────────────────────────────────────────────── */
 function initTerrain() {
   const canvas = document.getElementById('hero-canvas');
-  if (!canvas || typeof THREE === 'undefined') return;
+  if (!canvas) { console.warn('[Terrain] canvas not found'); return; }
+  if (typeof THREE === 'undefined') { console.warn('[Terrain] THREE not loaded'); return; }
 
+  try {
+    _buildTerrain(canvas);
+  } catch (err) {
+    console.error('[Terrain] init failed:', err);
+  }
+}
+
+function _buildTerrain(canvas) {
   const isMobile = window.innerWidth < 768;
 
   /* ── Scene ── */
   const scene = new THREE.Scene();
-  // Fog colour matches --bg so the terrain fades naturally at distance
   scene.fog = new THREE.Fog(0x0c0d10, 18, 42);
 
-  /* ── Camera ──
-     Positioned above and behind, looking forward and down —
-     classic game-engine viewport / low-altitude flyover feel  */
+  /* ── Size helper ──
+     Use window dimensions directly — reliable at any point in
+     the page lifecycle, including before layout is fully painted. */
   const getSize = () => ({
-    w: canvas.clientWidth  || window.innerWidth,
-    h: canvas.clientHeight || window.innerHeight,
+    w: window.innerWidth,
+    h: window.innerHeight,
   });
 
   const { w, h } = getSize();
+
+  /* ── Camera ── */
   const camera = new THREE.PerspectiveCamera(58, w / h, 0.1, 60);
   camera.position.set(0, 5, 10);
   camera.lookAt(new THREE.Vector3(0, 0, -8));
@@ -42,17 +52,15 @@ function initTerrain() {
   });
   renderer.setSize(w, h, false);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5));
-  renderer.setClearColor(0x000000, 0); // transparent — CSS bg shows through
+  renderer.setClearColor(0x000000, 0);
 
-  /* ── Terrain geometry ──
-     PlaneGeometry rotated flat; vertices animated each frame
-     with overlapping sine waves for an organic undulation.     */
+  /* ── Terrain geometry ── */
   const segments = isMobile ? 28 : 55;
   const geometry = new THREE.PlaneGeometry(60, 60, segments, segments);
-  geometry.rotateX(-Math.PI / 2); // lay flat
+  geometry.rotateX(-Math.PI / 2);
 
   const material = new THREE.MeshBasicMaterial({
-    color:       0x00d4ff,  // --cyan
+    color:       0x00d4ff,
     wireframe:   true,
     transparent: true,
     opacity:     isMobile ? 0.12 : 0.18,
@@ -72,15 +80,13 @@ function initTerrain() {
     for (let i = 0; i < posAttr.count; i++) {
       const x = posAttr.getX(i);
       const z = posAttr.getZ(i);
-      // Three overlapping waves — different frequencies & speeds
       const y =
-        Math.sin(x * 0.38 + time)          * 0.55 +
-        Math.sin(z * 0.32 + time * 0.75)   * 0.45 +
+        Math.sin(x * 0.38 + time)             * 0.55 +
+        Math.sin(z * 0.32 + time * 0.75)      * 0.45 +
         Math.sin((x + z) * 0.22 + time * 0.5) * 0.3;
       posAttr.setY(i, y);
     }
     posAttr.needsUpdate = true;
-
     renderer.render(scene, camera);
   }
 
