@@ -442,20 +442,6 @@ ul  { list-style: none; }
   transform: translateY(-2px);
 }
 
-/* Scroll hint */
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  animation: scrollBounce 2.4s ease-in-out infinite;
-}
 
 /* ══════════════════════════════════════════════════════════════
    SHARED SECTION STYLES
@@ -535,10 +521,6 @@ ul  { list-style: none; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
-  50%       { transform: translateX(-50%) translateY(6px); opacity: 0.9; }
-}
 
 /* ══════════════════════════════════════════════════════════════
    ABOUT
