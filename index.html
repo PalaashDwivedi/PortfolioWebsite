@@ -8,856 +8,746 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Custom crosshair cursor -->
+    <div id="cursor" aria-hidden="true">
+      <div class="cursor-h"></div>
+      <div class="cursor-v"></div>
+      <div class="cursor-dot"></div>
+    </div>
+
+    <!-- Fade-to-black transition overlay -->
+    <div id="fade-overlay" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav id="navbar">
       <div class="nav-container">
-        <div class="nav-left">
-          <div class="logo">
-            <a
-              href="#"
-              onclick="showSection('home')"
-              style="text-decoration: none; color: inherit"
-              >Palaash Dwivedi</a
+        <a href="#hero" class="nav-logo" data-scroll>Palaash Dwivedi</a>
+        <ul class="nav-links" role="list">
+          <li><a href="#about" class="nav-link" data-scroll>[ About ]</a></li>
+          <li>
+            <a href="#education" class="nav-link" data-scroll>[ Education ]</a>
+          </li>
+          <li>
+            <a href="#experience" class="nav-link" data-scroll
+              >[ Experience ]</a
             >
-          </div>
-        </div>
-        <ul class="nav-links">
-          <li>
-            <a href="#" onclick="showSection('home')" class="active">Home</a>
           </li>
-          <li><a href="#" onclick="showSection('about')">About Me</a></li>
-          <li><a href="#" onclick="showSection('education')">Education</a></li>
           <li>
-            <a href="#" onclick="showSection('experience')">Experience</a>
+            <a href="#projects" class="nav-link" data-scroll>[ Projects ]</a>
           </li>
-          <li><a href="#" onclick="showSection('projects')">Projects</a></li>
-          <li><a href="#" onclick="showSection('skills')">Skills</a></li>
+          <li><a href="#skills" class="nav-link" data-scroll>[ Skills ]</a></li>
           <li>
-            <a href="#" onclick="showSection('certificates')">Certificates</a>
+            <a href="#certificates" class="nav-link" data-scroll
+              >[ Certificates ]</a
+            >
           </li>
-          <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+          <li>
+            <a href="#contact" class="nav-link" data-scroll>[ Contact ]</a>
+          </li>
         </ul>
-        <div class="mobile-menu" onclick="toggleMobileMenu()">
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </nav>
 
-    <!-- Mobile overlay navigation -->
-    <div id="mobileOverlay" class="mobile-overlay" aria-hidden="true">
-      <div
-        class="mobile-nav"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="mobileNavLabel"
+    <!-- Mobile menu -->
+    <div
+      id="mobileMenu"
+      class="mobile-menu"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Navigation menu"
+    >
+      <button
+        class="mobile-menu-close"
+        id="mobileMenuClose"
+        aria-label="Close navigation menu"
       >
-        <button
-          class="mobile-close"
-          aria-label="Close menu"
-          onclick="closeMobileMenu()"
-        >
-          &times;
-        </button>
-        <h2 id="mobileNavLabel" class="visually-hidden">Mobile Navigation</h2>
-        <ul class="mobile-nav-links">
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('home');
-                closeMobileMenu();
-              "
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('about');
-                closeMobileMenu();
-              "
-              >About Me</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('education');
-                closeMobileMenu();
-              "
-              >Education</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('experience');
-                closeMobileMenu();
-              "
-              >Experience</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('projects');
-                closeMobileMenu();
-              "
-              >Projects</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('skills');
-                closeMobileMenu();
-              "
-              >Skills</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('certificates');
-                closeMobileMenu();
-              "
-              >Certificates</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              onclick="
-                smoothSectionTransition('contact');
-                closeMobileMenu();
-              "
-              >Contact</a
-            >
-          </li>
-        </ul>
-      </div>
+        &times;
+      </button>
+      <ul role="list">
+        <li>
+          <a href="#about" class="mobile-nav-link" data-scroll>[ About ]</a>
+        </li>
+        <li>
+          <a href="#education" class="mobile-nav-link" data-scroll
+            >[ Education ]</a
+          >
+        </li>
+        <li>
+          <a href="#experience" class="mobile-nav-link" data-scroll
+            >[ Experience ]</a
+          >
+        </li>
+        <li>
+          <a href="#projects" class="mobile-nav-link" data-scroll
+            >[ Projects ]</a
+          >
+        </li>
+        <li>
+          <a href="#skills" class="mobile-nav-link" data-scroll>[ Skills ]</a>
+        </li>
+        <li>
+          <a href="#certificates" class="mobile-nav-link" data-scroll
+            >[ Certificates ]</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="mobile-nav-link" data-scroll>[ Contact ]</a>
+        </li>
+      </ul>
     </div>
 
-    <!-- Home Section -->
-    <section id="home" class="page-section active">
-      <div class="hero">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1>Palaash Dwivedi</h1>
-            <div class="subtitle">Game Developer</div>
-            <p>
-              Passionate game developer with strong technical foundations and a
-              deep interest in gameplay mechanics. Currently in my second year
-              of college, building innovative gaming experiences with Unreal
-              Engine and creative problem-solving.
-            </p>
-            <div class="cta-buttons">
-              <a
-                href="#"
-                onclick="showSection('projects')"
-                class="btn btn-primary"
-                >View My Work</a
-              >
-              <a
-                href="#"
-                onclick="showSection('contact')"
-                class="btn btn-secondary"
-                >Get In Touch</a
-              >
-            </div>
-          </div>
-          <div class="hero-visual">
-            <div class="floating-card">
-              <h3 style="margin-bottom: 1rem; color: var(--accent-color)">
-                Core Skills
-              </h3>
-              <div class="skills-preview">
-                <div class="skill-item" aria-expanded="false">
-                  <div class="skill-header">
-                    <span class="skill-title">
-                      <img
-                        src="Images/Icons/UnrealEngineLogo2.png"
-                        alt="Unreal Engine"
-                        class="skill-icon"
-                      />
-                      Unreal Engine</span
-                    >
-                    <span class="chevron">▼</span>
-                  </div>
-                  <div class="skill-detail">
-                    C++ and Blueprints<br />Level Design, Input Systems<br />UE5
-                    Tools & Interface
-                  </div>
-                </div>
-                <div class="skill-item" aria-expanded="false">
-                  <div class="skill-header">
-                    <span class="skill-title"
-                      ><img
-                        src="Images/Icons/UnityEngineLogo5.png"
-                        alt="C++"
-                        class="skill-icon"
-                      />
-                      Unity</span
-                    >
-                    <span class="chevron">▼</span>
-                  </div>
-                  <div class="skill-detail">
-                    C#, MonoBehaviours<br />
-                    Gameplay Systems, UI<br />
-                    Vuforia AR Integration
-                  </div>
-                </div>
-                <div class="skill-item" aria-expanded="false">
-                  <div class="skill-header">
-                    <span class="skill-title"> Web Development</span>
-                    <span class="chevron">▼</span>
-                  </div>
-                  <div class="skill-detail">
-                    HTML, CSS, JavaScript<br />Responsive design<br />(Built
-                    this site from scratch)
-                  </div>
-                </div>
-                <div class="skill-item" aria-expanded="false">
-                  <div class="skill-header">
-                    <span class="skill-title"> Gameplay Programming</span>
-                    <span class="chevron">▼</span>
-                  </div>
-                  <div class="skill-detail">
-                    Game Mechanics, Game AI<br />Custom Animations<br />Physics-based
-                    Interactions
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section id="hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <p class="hero-label">// Game Developer</p>
+        <h1 class="hero-name">Palaash<br />Dwivedi</h1>
+        <p class="hero-sub">
+          Building gameplay systems that feel great to play<br />
+          in Unreal Engine, Unity, and beyond.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary" data-scroll>View My Work</a>
+          <a href="#contact" class="btn-ghost" data-scroll>Get In Touch</a>
         </div>
       </div>
+      <div class="hero-scroll-hint" aria-hidden="true">scroll ↓</div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="page-section">
-      <div class="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-image">
-            <div class="profile-placeholder"></div>
+    <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+    <section id="about" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading glitch-target">About Me</h2>
+        <div class="about-layout">
+          <div class="about-photo">
+            <img src="Images/Passport photo.jpg" alt="Palaash Dwivedi" />
           </div>
-          <div class="about-text">
-            <h3>Crafting Engaging Game Experiences</h3>
+          <div class="about-body">
             <p>
-              I'm a passionate game developer currently in my second year of
+              I'm a passionate game developer currently in my third year of
               college, with a strong focus on creating original and mechanically
               rich gaming experiences. My journey in game development has been
               driven by a fascination with gameplay systems and the challenge of
               building mechanics that feel both engaging and unique.
             </p>
-            <br />
             <p>
-              My core strength lies in building gameplay systems that emphasize
+              My core strength lies in building gameplay systems that emphasise
               tight controls, innovative mechanics, and player engagement. I
               work extensively with Unreal Engine, handling everything from
               scripting and level design to creating custom animations that
               enhance gameplay feedback and visual style.
             </p>
-            <br />
             <p>
               What sets me apart is my hands-on approach to learning and my
               ability to quickly adapt to new tools and programming languages. I
               believe in learning through practice, which is why I've built
               several game prototypes that showcase different aspects of game
-              development, from challenging platformers to innovative FPS
-              mechanics.
+              development.
             </p>
-            <br />
             <p>
               When I'm not coding or designing levels, I'm exploring new game
               mechanics, studying what makes games feel great to play, and
-              always looking for that next creative challenge that will push my
-              skills further.
+              always looking for that next creative challenge.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="page-section">
-      <div class="education">
-        <h2 class="section-title">Education</h2>
-        <div class="education-timeline">
-          <div class="education-item">
-            <div class="education-header">
-              <div>
-                <h3 class="education-title">
-                  Bachelor of Technology in Computer Science
-                </h3>
-                <div class="education-institution">Jain University</div>
-                <div class="education-date">2023 - Present</div>
+    <!-- ─── EDUCATION ─────────────────────────────────────────── -->
+    <section id="education" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading glitch-target">Education</h2>
+        <div class="edu-block glitch-target">
+          <div class="edu-meta">
+            <span class="edu-degree">B.Tech - Computer Science</span>
+            <span class="edu-institution">Jain University</span>
+            <span class="edu-date"
+              >2023 – Present &nbsp;·&nbsp; Third Year</span
+            >
+          </div>
+          <div class="edu-stats">
+            <div class="stat-row">
+              <span class="stat-label">Semester 5</span>
+              <div class="stat-bar-wrap">
+                <div class="stat-bar" data-value="94"></div>
               </div>
+              <span class="stat-value">9.4 / 10</span>
             </div>
-            <div class="education-details">
-              <div class="grade-item">
-                <span class="grade-label">Current Year:</span>
-                <span class="grade-value">Third Year</span>
+            <div class="stat-row">
+              <span class="stat-label">Semester 4</span>
+              <div class="stat-bar-wrap">
+                <div class="stat-bar" data-value="94.6"></div>
               </div>
-              <div class="grade-item">
-                <span class="grade-label">Semester 5 CGPA:</span>
-                <span class="grade-value">9.4/10</span>
+              <span class="stat-value">9.46 / 10</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Semester 3</span>
+              <div class="stat-bar-wrap">
+                <div class="stat-bar" data-value="87.6"></div>
               </div>
-              <div class="grade-item">
-                <span class="grade-label">Semester 4 CGPA:</span>
-                <span class="grade-value">9.46/10</span>
+              <span class="stat-value">8.76 / 10</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Semester 2</span>
+              <div class="stat-bar-wrap">
+                <div class="stat-bar" data-value="79.2"></div>
               </div>
-              <div class="grade-item">
-                <span class="grade-label">Semester 3 CGPA:</span>
-                <span class="grade-value">8.76/10</span>
-              </div>
-              <div class="grade-item">
-                <span class="grade-label">Semester 2 CGPA:</span>
-                <span class="grade-value">7.92/10</span>
-              </div>
-              <div class="grade-item">
-                <span class="grade-label">Focus Areas:</span>
-                <span class="grade-value"
-                  >Game Development, Programming, Software Engineering</span
-                >
-              </div>
+              <span class="stat-value">7.92 / 10</span>
             </div>
           </div>
+          <p class="edu-focus">
+            Focus: Game Development &nbsp;·&nbsp; Programming &nbsp;·&nbsp;
+            Software Engineering
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Work Experience Section -->
-    <section id="experience" class="page-section">
-      <div class="work-experience">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="experience-timeline">
-          <div class="experience-item">
-            <div class="experience-header">
-              <div class="company-logo">
-                <a
-                  href="https://www.enableindia.org/"
-                  target="_blank"
-                  class="company-logo"
-                >
-                  <img
-                    src="Images/Icons/EnableIndiaLogo.jpg"
-                    alt="Enable India"
-                    class="company-logo-img"
-                  />
-                </a>
-              </div>
-              <div class="experience-info">
-                <h3 class="experience-title">Game Development Intern</h3>
-                <a
-                  href="https://www.enableindia.org/"
-                  target="_blank"
-                  class="experience-company"
-                  >Enable India</a
-                >
-                <div class="experience-date">October 2025 - January 2026</div>
-              </div>
-            </div>
-            <p class="experience-description">
-              Worked on designing and implementing accessibility-focused
-              gameplay systems for players with blindness and visual impairments
-              in a 3D game project using Unreal Engine.
-            </p>
-            <ul class="experience-responsibilities">
-              <li>
-                Implemented audio-driven gameplay cues and feedback systems to
-                convey gameplay state without relying on visuals
-              </li>
-              <li>
-                Designed mechanics that prioritised sound, timing, and spatial
-                awareness over on-screen information
-              </li>
-              <li>
-                Integrated accessibility considerations into core gameplay logic
-                and input handling
-              </li>
-              <li>
-                Iterated on gameplay systems based on playtesting and feedback
-                from an accessibility perspective
-              </li>
-            </ul>
-            <!-- <div class="experience-certificate">
+    <!-- ─── EXPERIENCE ────────────────────────────────────────── -->
+    <section id="experience" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading glitch-target">Experience</h2>
+        <div class="exp-block glitch-target">
+          <div class="exp-header">
+            <a
+              href="https://www.enableindia.org/"
+              target="_blank"
+              rel="noopener"
+              class="exp-logo-link"
+            >
               <img
-                src="Images/Work/EnableIndiaCertificate1.jpeg"
-                alt="Enable India Internship Certificate"
-                class="certificate-preview"
+                src="Images/Icons/EnableIndiaLogo.jpg"
+                alt="Enable India logo"
+                class="exp-logo"
               />
-            </div> -->
+            </a>
+            <div class="exp-meta">
+              <h3 class="exp-title">Game Development Intern</h3>
+              <a
+                href="https://www.enableindia.org/"
+                target="_blank"
+                rel="noopener"
+                class="exp-company"
+                >Enable India</a
+              >
+              <span class="exp-date">October 2025 – January 2026</span>
+            </div>
+          </div>
+          <p class="exp-desc">
+            Worked on designing and implementing accessibility-focused gameplay
+            systems for players with blindness and visual impairments in a 3D
+            game project using Unreal Engine.
+          </p>
+          <ul class="exp-list">
+            <li>
+              Implemented audio-driven gameplay cues and feedback systems to
+              convey gameplay state without relying on visuals
+            </li>
+            <li>
+              Designed mechanics that prioritised sound, timing, and spatial
+              awareness over on-screen information
+            </li>
+            <li>
+              Integrated accessibility considerations into core gameplay logic
+              and input handling
+            </li>
+            <li>
+              Iterated on gameplay systems based on playtesting and feedback
+              from an accessibility perspective
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ──────────────────────────────────────────── -->
+    <section id="projects" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading glitch-target">Projects</h2>
+      </div>
+
+      <div class="project-feature glitch-target">
+        <div class="project-img-wrap">
+          <img
+            src="Images/Projects/AncestryOfTimeLogo.png"
+            alt="Ancestry of Time"
+            class="project-img"
+          />
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">01</span>
+          <h3 class="project-name">Ancestry of Time</h3>
+          <p class="project-desc">
+            A first-person shooter built in Unreal Engine where time moves only
+            when you do - inspired by Superhot. Play as a kidnapped heir with
+            time-bending powers, progressing through stages to unlock abilities
+            and escape a secret organisation. This 3-level prototype showcases
+            core time-based mechanics and ability progression.
+          </p>
+          <div class="project-tags">
+            <span>Unreal Engine 5</span><span>C++</span><span>Blueprints</span
+            ><span>FPS Mechanics</span>
+          </div>
+          <div class="project-actions">
+            <a
+              href="https://palaash-dwivedi.itch.io/ancestry-of-time"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >Download Game ↗</a
+            >
+            <a
+              href="https://youtu.be/FKvfHX1ShG4"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >Watch Trailer ↗</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-feature project-feature--flip glitch-target">
+        <div class="project-img-wrap">
+          <img
+            src="Images/Projects/BinItRight.png"
+            alt="Bin It Right"
+            class="project-img"
+          />
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">02</span>
+          <h3 class="project-name">Bin It Right</h3>
+          <p class="project-desc">
+            A 2D recycling-themed game built in Unreal Engine using C++.
+            Collaborated on core gameplay programming, handling player
+            mechanics, interactions, and logic flow. Delivers smooth
+            side-scrolling mechanics with educational intent, aimed at promoting
+            eco-consciousness. Won Best Game at Pixel Clash Game Jam 2025.
+          </p>
+          <div class="project-tags">
+            <span>Unreal Engine</span><span>C++</span><span>2D Gameplay</span
+            ><span>Team Collaboration</span>
+          </div>
+          <div class="project-actions">
+            <a
+              href="https://youtu.be/OkKHqavAERE"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >Watch Video ↗</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-feature glitch-target">
+        <div class="project-img-wrap">
+          <img
+            src="Images/Projects/UnfairPlatformer.png"
+            alt="Unfair Platformer"
+            class="project-img"
+          />
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">03</span>
+          <h3 class="project-name">Unfair Platformer</h3>
+          <p class="project-desc">
+            A challenging platformer created in Unity with C#, featuring
+            deceptive mechanics and booby traps that keep players on their toes.
+            Highlights skills in gameplay systems and level design, focusing on
+            creating memorable and challenging experiences through clever level
+            construction.
+          </p>
+          <div class="project-tags">
+            <span>Unity</span><span>C#</span><span>Level Design</span
+            ><span>Platformer</span>
+          </div>
+          <div class="project-actions">
+            <a
+              href="https://palaash-dwivedi.itch.io/unfair-platformer"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >Download Game ↗</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-feature project-feature--flip glitch-target">
+        <div class="project-img-wrap">
+          <img
+            src="Images/Projects/TraversalMechanicsDemo.png"
+            alt="Traversal Mechanic Demo"
+            class="project-img"
+          />
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">04</span>
+          <h3 class="project-name">Traversal Mechanic Demo</h3>
+          <p class="project-desc">
+            A gameplay prototype exploring physics-based traversal mechanics in
+            Unreal Engine 5.5.4. Features a unique charging system where holding
+            the left mouse button charges a launcher - force and direction
+            depend on player position and charge time. Includes custom hand
+            animations created in-engine.
+          </p>
+          <div class="project-tags">
+            <span>Unreal Engine 5.5.4</span><span>Blueprints</span
+            ><span>Physics</span><span>Custom Animations</span>
+          </div>
+          <div class="project-actions">
+            <a
+              href="https://youtu.be/79n36LSAytY"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >Watch Demo ↗</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-feature glitch-target">
+        <div class="project-img-wrap">
+          <img
+            src="Images/Projects/MobControl.png"
+            alt="Mob Control"
+            class="project-img"
+          />
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">05</span>
+          <h3 class="project-name">Mob Control</h3>
+          <p class="project-desc">
+            A hyper-casual crowd control game built in Unreal Engine using C++.
+            Players defend their village from waves of incoming enemies with
+            tactile shooting mechanics, challenging AI, and strategic enemy
+            spawns. Designed for mobile with intuitive joystick-based UI
+            focusing on fast-paced survival gameplay.
+          </p>
+          <div class="project-tags">
+            <span>Unreal Engine</span><span>C++</span><span>Mobile Game</span
+            ><span>AI Programming</span>
+          </div>
+          <div class="project-actions">
+            <span class="proj-link proj-link--muted">Unpublished</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-feature project-feature--flip glitch-target">
+        <div class="project-img-wrap">
+          <img
+            src="Images/Projects/PokemonAR.png"
+            alt="Pokémon AR Experience"
+            class="project-img"
+          />
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">06</span>
+          <h3 class="project-name">Pokémon AR Experience</h3>
+          <p class="project-desc">
+            An augmented reality Pokémon application built in Unity using
+            Vuforia. Scan image targets to spawn and interact with 12 different
+            Pokémon in real-world space. Each Pokémon features custom scaling,
+            positioning, and particle effects for immersion. Developed as an
+            academic project focused on AR tracking and interaction.
+          </p>
+          <div class="project-tags">
+            <span>Unity</span><span>Vuforia</span><span>Augmented Reality</span
+            ><span>C#</span>
+          </div>
+          <div class="project-actions">
+            <a
+              href="https://youtu.be/pFSlwzKSno8?si=LcXdiKeMxdjCudFd"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >View Demo ↗</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="project-feature glitch-target">
+        <div class="project-img-wrap project-img-wrap--placeholder">
+          <div class="project-img-placeholder">&lt;/&gt;</div>
+          <div class="project-scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-number">07</span>
+          <h3 class="project-name">Portfolio Website</h3>
+          <p class="project-desc">
+            A responsive portfolio site built with HTML, CSS, and JavaScript.
+            Features a game-engine-inspired aesthetic with Three.js wireframe
+            terrain, custom crosshair cursor, glitch-in scroll animations, and
+            full-width project showcases. Built from scratch with attention to
+            design, accessibility, and performance.
+          </p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span
+            ><span>Three.js</span><span>UI/UX</span>
+          </div>
+          <div class="project-actions">
+            <a
+              href="https://github.com/PalaashDwivedi/PortfolioWebsite"
+              target="_blank"
+              rel="noopener"
+              class="proj-link"
+              >GitHub Repo ↗</a
+            >
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="page-section">
-      <div class="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <img
-              src="Images/Projects/AncestryOfTimeLogo.png"
-              alt="Ancestry of Time"
-              class="project-image"
-            />
-            <h3 class="project-title">Ancestry of Time</h3>
-            <p class="project-description">
-              A first-person shooter built in Unreal Engine where time moves
-              only when you do—inspired by Superhot. Play as a kidnapped heir
-              with time-bending powers, progressing through stages to unlock
-              abilities and escape a secret organization. This 3-level prototype
-              showcases core time-based mechanics and ability progression.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Unreal Engine 5</span>
-              <span class="tech-tag">C++</span>
-              <span class="tech-tag">Blueprints</span>
-              <span class="tech-tag">FPS Mechanics</span>
-            </div>
-            <div class="project-links">
-              <a
-                href="https://palaash-dwivedi.itch.io/ancestry-of-time"
-                target="_blank"
-                >Download Game</a
-              >
-              <a href="https://youtu.be/FKvfHX1ShG4" target="_blank"
-                >Watch Trailer</a
-              >
-            </div>
+    <!-- ─── SKILLS ────────────────────────────────────────────── -->
+    <section id="skills" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading glitch-target">Skills</h2>
+        <div class="skills-layout">
+          <div class="skill-group glitch-target">
+            <h3 class="skill-group-title">// Game Development</h3>
+            <ul>
+              <li>Unreal Engine 5 - Blueprints &amp; C++</li>
+              <li>Unity - C# &amp; MonoBehaviours</li>
+              <li>AI Programming - Behavior Trees &amp; Blackboards</li>
+              <li>Custom Animation Systems</li>
+              <li>Physics-Based Interactions</li>
+              <li>Level Design &amp; World Building</li>
+              <li>Mobile Game Development</li>
+            </ul>
           </div>
-
-          <div class="project-card">
-            <img
-              src="Images/Projects/BinItRight.png"
-              alt="Bin It Right"
-              class="project-image"
-            />
-            <h3 class="project-title">Bin It Right</h3>
-            <p class="project-description">
-              A 2D recycling-themed game built in Unreal Engine using C++. I
-              collaborated on core gameplay programming, handling player
-              mechanics, interactions, and logic flow. While my focus was on
-              programming, all visual assets were developed by a teammate. The
-              game delivers smooth side-scrolling mechanics with educational
-              intent, aimed at promoting eco-consciousness.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Unreal Engine</span>
-              <span class="tech-tag">C++</span>
-              <span class="tech-tag">2D Gameplay</span>
-              <span class="tech-tag">Team Collaboration</span>
-            </div>
-            <div class="project-links">
-              <a href="https://youtu.be/OkKHqavAERE" target="_blank">Video</a>
-            </div>
+          <div class="skill-group glitch-target">
+            <h3 class="skill-group-title">// Programming</h3>
+            <ul>
+              <li>C++</li>
+              <li>C# (Intermediate)</li>
+              <li>Python</li>
+              <li>JavaScript, HTML &amp; CSS</li>
+              <li>Object-Oriented Programming</li>
+              <li>Debugging &amp; Performance Optimisation</li>
+            </ul>
           </div>
-
-          <div class="project-card">
-            <img
-              src="Images/Projects/UnfairPlatformer.png"
-              alt="Unfair Platformer"
-              class="project-image"
-            />
-            <h3 class="project-title">Unfair Platformer</h3>
-            <p class="project-description">
-              A challenging platformer created in Unity with C#, featuring
-              deceptive mechanics and booby traps that keep players on their
-              toes. This project highlights my skills in gameplay systems and
-              level design, focusing on creating memorable and challenging
-              experiences through clever level construction.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Unity</span>
-              <span class="tech-tag">C#</span>
-              <span class="tech-tag">Level Design</span>
-              <span class="tech-tag">Platformer</span>
-            </div>
-            <div class="project-links">
-              <a
-                href="https://palaash-dwivedi.itch.io/unfair-platformer"
-                target="_blank"
-                >Download Game</a
-              >
-            </div>
+          <div class="skill-group glitch-target">
+            <h3 class="skill-group-title">// Tools</h3>
+            <ul>
+              <li>Unreal Engine 5, Unity</li>
+              <li>Visual Studio, VS Code</li>
+              <li>Git &amp; Version Control</li>
+              <li>Debugging &amp; Profiling Tools</li>
+              <li>Mobile Development SDKs</li>
+            </ul>
           </div>
-
-          <div class="project-card">
-            <img
-              src="Images/Projects/TraversalMechanicsDemo.png"
-              alt="Traversal Mechanic Demo"
-              class="project-image"
-            />
-            <h3 class="project-title">Traversal Mechanic Demo</h3>
-            <p class="project-description">
-              A gameplay prototype exploring physics-based traversal mechanics
-              in Unreal Engine 5.5.4. Features a unique charging system where
-              holding the left mouse button charges a launcher—force and
-              direction depend on player position and charge time. Includes
-              custom hand animations created in-engine.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Unreal Engine 5.5.4</span>
-              <span class="tech-tag">Blueprints</span>
-              <span class="tech-tag">Physics</span>
-              <span class="tech-tag">Custom Animations</span>
-            </div>
-            <div class="project-links">
-              <a href="https://youtu.be/79n36LSAytY" target="_blank"
-                >Watch Demo</a
-              >
-            </div>
-          </div>
-
-          <div class="project-card">
-            <img
-              src="Images/Projects/MobControl.png"
-              alt="Mob Control"
-              class="project-image"
-            />
-            <h3 class="project-title">Mob Control</h3>
-            <p class="project-description">
-              A hyper-casual crowd control game built in Unreal Engine using
-              C++. Players defend their village from waves of incoming enemies
-              with tactile shooting mechanics, challenging AI, and strategic
-              enemy spawns. Designed for mobile with intuitive joystick-based UI
-              focusing on fast-paced survival gameplay.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Unreal Engine</span>
-              <span class="tech-tag">C++</span>
-              <span class="tech-tag">Mobile Game</span>
-              <span class="tech-tag">AI Programming</span>
-            </div>
-            <div class="project-links">
-              <a href="#" onclick="alert('Unpublished')">Unpublished</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <img
-              src="Images/Projects/PokemonAR.png"
-              alt="Pokémon AR App"
-              class="project-image"
-            />
-            <h3 class="project-title">Pokémon AR Experience</h3>
-            <p class="project-description">
-              An augmented reality Pokémon application built in Unity using
-              Vuforia. The app allows users to scan image targets to spawn and
-              interact with 12 different Pokémon in real-world space. Each
-              Pokémon features custom scaling, positioning, and particle effects
-              to enhance visual feedback and immersion. Developed as an academic
-              project with a focus on AR tracking, interaction, and
-              presentation.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Unity</span>
-              <span class="tech-tag">Vuforia</span>
-              <span class="tech-tag">Augmented Reality</span>
-              <span class="tech-tag">C#</span>
-            </div>
-            <div class="project-links">
-              <a
-                href="https://youtu.be/pFSlwzKSno8?si=LcXdiKeMxdjCudFd "
-                target="_blank"
-                >View Demo</a
-              >
-            </div>
-          </div>
-
-          <div class="project-card">
-            <!-- <img
-              src="Images/Projects/portfolio-website.jpg"
-              alt="Portfolio Website"
-              class="project-image"
-            /> -->
-            <h3 class="project-title">Portfolio Website</h3>
-            <p class="project-description">
-              A responsive portfolio site built with HTML, CSS, and JavaScript.
-              Features interactive skill toggles, project showcases, and a fully
-              custom layout. This site highlights my front-end skills and
-              attention to design, accessibility, and structure.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">HTML</span>
-              <span class="tech-tag">CSS</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">Responsive Design</span>
-              <span class="tech-tag">UI/UX</span>
-            </div>
-            <div class="project-links">
-              <a
-                href="https://github.com/PalaashDwivedi/PortfolioWebsite"
-                target="_blank"
-                >GitHub Repo</a
-              >
-            </div>
+          <div class="skill-group glitch-target">
+            <h3 class="skill-group-title">// Design &amp; Soft Skills</h3>
+            <ul>
+              <li>Gameplay System Design</li>
+              <li>Creative Problem Solving</li>
+              <li>Rapid Prototyping</li>
+              <li>Team Collaboration</li>
+              <li>Fast Learning &amp; Adaptability</li>
+              <li>Project Management</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="page-section">
-      <div class="skills">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-categories">
-          <div class="skill-category">
-            <h3>Game Development</h3>
-            <div class="skill-card-content">
-              <p>Unreal Engine (Blueprints & C++)</p>
-              <p>Unity (C#)</p>
-              <p>AI Programming (Behavior Trees & Blackboards)</p>
-              <p>Custom Animation Systems</p>
-              <p>Physics-Based Interactions</p>
-              <p>Level Design & World Building</p>
-              <p>Mobile Game Development</p>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>Programming Languages</h3>
-            <div class="skill-card-content">
-              <p>C++</p>
-              <p>Python</p>
-              <p>JavaScript, HTML & CSS</p>
-              <p>C# (Intermediate)</p>
-              <p>Object-Oriented Programming (OOP)</p>
-              <p>Debugging & Performance Optimization</p>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>Development Tools</h3>
-            <div class="skill-card-content">
-              <p>Unreal Engine 5, Unity</p>
-              <p>Visual Studio, VS Code</p>
-              <p>Git & Version Control</p>
-              <p>Debugging & Profiling Tools</p>
-              <p>Mobile Development SDKs</p>
-            </div>
-          </div>
-
-          <div class="skill-category">
-            <h3>Design & Soft Skills</h3>
-            <div class="skill-card-content">
-              <p>Gameplay System Design</p>
-              <p>Creative Problem Solving</p>
-              <p>Rapid Prototyping</p>
-              <p>Team Collaboration & Communication</p>
-              <p>Fast Learning & Adaptability</p>
-              <p>Project & Time Management</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <div id="certificateModal" class="certificate-modal" onclick="closeModal()">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <img id="modalImage" src="" alt="Certificate" class="modal-image" />
+    <!-- ─── CERTIFICATES ──────────────────────────────────────── -->
+    <div
+      id="certificateModal"
+      class="certificate-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Certificate viewer"
+    >
+      <div class="modal-inner">
+        <button
+          class="modal-close"
+          id="modalClose"
+          aria-label="Close certificate"
+        >
+          &times;
+        </button>
+        <img id="modalImage" src="" alt="Certificate full view" />
       </div>
     </div>
 
-    <section id="certificates" class="page-section">
-      <div class="certificates">
-        <h2 class="section-title">Certificates & Achievements</h2>
-        <div class="certificates-grid">
-          <div
-            class="certificate-card"
-            data-cert-id="cert6"
-            onclick="openModal('cert6')"
-          >
-            <img
-              src="Images/Certificates/PixelClashCertificate.jpeg"
-              alt="Certificate 6"
-              class="certificate-image"
-            />
-            <h3 class="certificate-title">
-              Pixel Clash Game Jam 2025 - Best Game Award
-            </h3>
-            <p class="certificate-issuer">Jain University</p>
-            <p class="certificate-date">2025</p>
-            <p class="certificate-description">
-              Recognized for outstanding creativity and gameplay mechanics in
-              the Pixel Clash Game Jam 2025. This award highlights the ability
-              to innovate and deliver engaging gaming experiences under time
-              constraints. (Bin It Right)
+    <section id="certificates" class="section">
+      <div class="section-inner">
+        <h2 class="section-heading glitch-target">Certificates</h2>
+
+        <div
+          class="cert-highlight glitch-target"
+          data-img="Images/Certificates/PixelClashCertificate.jpeg"
+        >
+          <div class="cert-highlight-body">
+            <span class="cert-award-badge">★ Award</span>
+            <h3>Pixel Clash Game Jam 2025 - Best Game</h3>
+            <p class="cert-org">Jain University &nbsp;·&nbsp; 2025</p>
+            <p class="cert-desc">
+              Recognised for outstanding creativity and gameplay mechanics under
+              jam constraints, for the game Bin It Right.
             </p>
           </div>
+          <img
+            src="Images/Certificates/PixelClashCertificate.jpeg"
+            alt="Pixel Clash Best Game certificate"
+            class="cert-thumb"
+          />
         </div>
-        <div class="certificates-grid">
+
+        <div class="certs-row">
           <div
-            class="certificate-card"
-            data-cert-id="cert1"
-            onclick="openModal('cert1')"
+            class="cert-item glitch-target"
+            data-img="Images/Certificates/UE5BluePrints1.jpg"
           >
             <img
               src="Images/Certificates/UE5BluePrints1.jpg"
-              alt="Certificate 1"
-              class="certificate-image"
+              alt="UE5 Blueprints for Beginners certificate"
+              class="cert-item-img"
             />
-            <h3 class="certificate-title">
-              Unreal Engine 5 (UE5): Blueprints for Beginners
-            </h3>
-            <p class="certificate-issuer">Udemy - Pixel Helmet</p>
-            <p class="certificate-date">2024</p>
+            <div class="cert-item-body">
+              <h4>UE5: Blueprints for Beginners</h4>
+              <span>Udemy – Pixel Helmet &nbsp;·&nbsp; 2024</span>
+            </div>
           </div>
-
           <div
-            class="certificate-card"
-            data-cert-id="cert2"
-            onclick="openModal('cert2')"
+            class="cert-item glitch-target"
+            data-img="Images/Certificates/UE5ActionAdventure.jpg"
           >
             <img
               src="Images/Certificates/UE5ActionAdventure.jpg"
-              alt="Certificate 2"
-              class="certificate-image"
+              alt="UE5 Action Adventure certificate"
+              class="cert-item-img"
             />
-            <h3 class="certificate-title">
-              Unreal Engine 5: Action Adventure Game Development Course
-            </h3>
-            <p class="certificate-issuer">Udemy - GameDev.tv</p>
-            <p class="certificate-date">2024</p>
+            <div class="cert-item-body">
+              <h4>UE5: Action Adventure Game Dev</h4>
+              <span>Udemy – GameDev.tv &nbsp;·&nbsp; 2024</span>
+            </div>
           </div>
-
           <div
-            class="certificate-card"
-            data-cert-id="cert3"
-            onclick="openModal('cert3')"
+            class="cert-item glitch-target"
+            data-img="Images/Certificates/CppBeginner.jpg"
           >
             <img
               src="Images/Certificates/CppBeginner.jpg"
-              alt="Certificate 3"
-              class="certificate-image"
+              alt="Beginning C++ certificate"
+              class="cert-item-img"
             />
-            <h3 class="certificate-title">
-              Beginning C++ Programming – From Beginner to Beyond
-            </h3>
-            <p class="certificate-issuer">
-              Udemy - Tim Buchalka's Learn Programming Academy
-            </p>
-            <p class="certificate-date">2025</p>
+            <div class="cert-item-body">
+              <h4>Beginning C++ - Beginner to Beyond</h4>
+              <span>Udemy – Tim Buchalka &nbsp;·&nbsp; 2025</span>
+            </div>
           </div>
-
           <div
-            class="certificate-card"
-            data-cert-id="cert4"
-            onclick="openModal('cert4')"
+            class="cert-item glitch-target"
+            data-img="Images/Certificates/UE5Cpp.jpg"
           >
             <img
               src="Images/Certificates/UE5Cpp.jpg"
-              alt="Certificate 4"
-              class="certificate-image"
+              alt="UE5 C++ Developer certificate"
+              class="cert-item-img"
             />
-            <h3 class="certificate-title">
-              Unreal Engine 5 C++ Developer: Learn C++ & Make Video Games
-            </h3>
-            <p class="certificate-issuer">Udemy - GameDev.tv</p>
-            <p class="certificate-date">2025</p>
+            <div class="cert-item-body">
+              <h4>UE5 C++ Developer: Learn C++ &amp; Make Games</h4>
+              <span>Udemy – GameDev.tv &nbsp;·&nbsp; 2025</span>
+            </div>
           </div>
-
           <div
-            class="certificate-card"
-            data-cert-id="cert5"
-            onclick="openModal('cert5')"
+            class="cert-item glitch-target"
+            data-img="Images/Certificates/Unreal2DGames.jpg"
           >
             <img
               src="Images/Certificates/Unreal2DGames.jpg"
-              alt="Certificate 5"
-              class="certificate-image"
+              alt="Unreal Engine 2D certificate"
+              class="cert-item-img"
             />
-            <h3 class="certificate-title">Unreal Engine 2D</h3>
-            <p class="certificate-issuer">Udemy - GameDev.tv</p>
-            <p class="certificate-date">2026</p>
+            <div class="cert-item-body">
+              <h4>Unreal Engine 2D</h4>
+              <span>Udemy – GameDev.tv &nbsp;·&nbsp; 2026</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="page-section">
-      <div class="contact">
-        <h2 class="section-title">Let's Work Together</h2>
-        <div class="contact-content">
-          <p
-            style="
-              font-size: 1.1rem;
-              color: var(--text-gray);
-              margin-bottom: 2rem;
-            "
+    <!-- ─── CONTACT / FOOTER ──────────────────────────────────── -->
+    <footer id="contact">
+      <div class="footer-inner">
+        <h2 class="section-heading glitch-target">Let's Work Together</h2>
+        <p class="footer-sub glitch-target">
+          I'm always open to collaborating on interesting game projects or
+          discussing new opportunities.
+        </p>
+        <nav class="footer-links" aria-label="Contact links">
+          <a href="mailto:palaashd@gmail.com" class="footer-link glitch-target">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            palaashd@gmail.com
+          </a>
+          <a
+            href="https://www.linkedin.com/in/palaashdwivedi/"
+            target="_blank"
+            rel="noopener"
+            class="footer-link glitch-target"
           >
-            I'm always excited to collaborate on innovative game projects or
-            discuss new opportunities in game development. Whether you're
-            looking for a passionate developer or want to chat about game
-            mechanics, I'd love to hear from you!
-          </p>
-
-          <div class="contact-info">
-            <a href="mailto:palaashd@gmail.com" class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <h3>Email</h3>
-              <p>palaashd@gmail.com</p>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/palaashdwivedi/"
-              target="_blank"
-              class="contact-item"
-            >
-              <div class="contact-icon">
-                <i class="fab fa-linkedin"></i>
-              </div>
-              <h3>LinkedIn</h3>
-              <p>Connect with me</p>
-            </a>
-
-            <a
-              href="https://palaash-dwivedi.itch.io/"
-              target="_blank"
-              class="contact-item"
-            >
-              <div class="contact-icon">
-                <i class="fab fa-itch-io"></i>
-              </div>
-              <h3>Itch.io</h3>
-              <p>Play my games</p>
-            </a>
-
-            <a
-              href="https://www.youtube.com/@PalaashDwivedi-i8b"
-              target="_blank"
-              class="contact-item"
-            >
-              <div class="contact-icon">
-                <i class="fab fa-youtube"></i>
-              </div>
-              <h3>YouTube</h3>
-              <p>Watch my demos</p>
-            </a>
-          </div>
-        </div>
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            LinkedIn
+          </a>
+          <a
+            href="https://palaash-dwivedi.itch.io/"
+            target="_blank"
+            rel="noopener"
+            class="footer-link glitch-target"
+          >
+            <i class="fab fa-itch-io" aria-hidden="true"></i>
+            Itch.io
+          </a>
+          <a
+            href="https://www.youtube.com/@PalaashDwivedi-i8b"
+            target="_blank"
+            rel="noopener"
+            class="footer-link glitch-target"
+          >
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+            YouTube
+          </a>
+        </nav>
+        <p class="footer-credit">Built by Palaash Dwivedi</p>
       </div>
-    </section>
-    <script src="script.js"></script>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="Script.js"></script>
   </body>
 </html>
