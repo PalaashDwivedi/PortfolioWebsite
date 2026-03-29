@@ -54,7 +54,7 @@ function showSection(sectionName) {
   });
 
   const activeLink = document.querySelector(
-    `[onclick="showSection('${sectionName}')"]`
+    `[onclick="showSection('${sectionName}')"]`,
   );
   if (activeLink) {
     activeLink.classList.add("active");
@@ -97,7 +97,7 @@ function closeMobileMenu() {
 // Smooth animations on scroll
 function animateOnScroll() {
   const elements = document.querySelectorAll(
-    ".project-card, .skill-category, .contact-item"
+    ".project-card, .skill-category, .contact-item",
   );
   elements.forEach((element) => {
     const elementTop = element.getBoundingClientRect().top;
@@ -237,7 +237,7 @@ const observer = new IntersectionObserver(function (entries) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const elementsToAnimate = document.querySelectorAll(
-    ".project-card, .skill-category, .contact-item, .about-text, .hero-visual, .education-item, .experience-item"
+    ".project-card, .skill-category, .contact-item, .about-text, .hero-visual, .education-item, .experience-item",
   );
   elementsToAnimate.forEach((el) => {
     observer.observe(el);
