@@ -254,16 +254,21 @@ function initModal() {
    INIT — run everything once the DOM is ready
    ────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  initTerrain();
-  initCursor();
-  initNavScroll();
-  initMobileMenu();
-  initModal();
-  initFadeTransitions();
-  initGlitchIn();
-  initStatBars();
-  initScanLines();
-  initNavActive();
+  // Each init is isolated — one failure cannot abort the rest
+  [
+    initTerrain,
+    initCursor,
+    initNavScroll,
+    initMobileMenu,
+    initModal,
+    initFadeTransitions,
+    initGlitchIn,
+    initStatBars,
+    initScanLines,
+    initNavActive,
+  ].forEach(fn => {
+    try { fn(); } catch (err) { console.error(`[init] ${fn.name} failed:`, err); }
+  });
 });
 
 /* ──────────────────────────────────────────────────────────────
