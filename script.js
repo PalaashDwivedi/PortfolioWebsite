@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /* ═══════════════════════════════════════════════════════════════
    PALAASH DWIVEDI — PORTFOLIO  |  Script.js
@@ -11,14 +11,20 @@
    THREE.JS WIREFRAME TERRAIN
    ────────────────────────────────────────────────────────────── */
 function initTerrain() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) { console.warn('[Terrain] canvas not found'); return; }
-  if (typeof THREE === 'undefined') { console.warn('[Terrain] THREE not loaded'); return; }
+  const canvas = document.getElementById("hero-canvas");
+  if (!canvas) {
+    console.warn("[Terrain] canvas not found");
+    return;
+  }
+  if (typeof THREE === "undefined") {
+    console.warn("[Terrain] THREE not loaded");
+    return;
+  }
 
   try {
     _buildTerrain(canvas);
   } catch (err) {
-    console.error('[Terrain] init failed:', err);
+    console.error("[Terrain] init failed:", err);
   }
 }
 
@@ -47,7 +53,7 @@ function _buildTerrain(canvas) {
   /* ── Renderer ── */
   const renderer = new THREE.WebGLRenderer({
     canvas,
-    alpha:     true,
+    alpha: true,
     antialias: !isMobile,
   });
   renderer.setSize(w, h, false);
@@ -60,10 +66,10 @@ function _buildTerrain(canvas) {
   geometry.rotateX(-Math.PI / 2);
 
   const material = new THREE.MeshBasicMaterial({
-    color:       0x00d4ff,
-    wireframe:   true,
+    color: 0x00d4ff,
+    wireframe: true,
     transparent: true,
-    opacity:     isMobile ? 0.12 : 0.18,
+    opacity: isMobile ? 0.12 : 0.18,
   });
 
   const mesh = new THREE.Mesh(geometry, material);
@@ -81,8 +87,8 @@ function _buildTerrain(canvas) {
       const x = posAttr.getX(i);
       const z = posAttr.getZ(i);
       const y =
-        Math.sin(x * 0.38 + time)             * 0.55 +
-        Math.sin(z * 0.32 + time * 0.75)      * 0.45 +
+        Math.sin(x * 0.38 + time) * 0.55 +
+        Math.sin(z * 0.32 + time * 0.75) * 0.45 +
         Math.sin((x + z) * 0.22 + time * 0.5) * 0.3;
       posAttr.setY(i, y);
     }
@@ -93,7 +99,7 @@ function _buildTerrain(canvas) {
   animate();
 
   /* ── Resize handler ── */
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     const { w: nw, h: nh } = getSize();
     camera.aspect = nw / nh;
     camera.updateProjectionMatrix();
@@ -105,55 +111,67 @@ function _buildTerrain(canvas) {
    CROSSHAIR CURSOR
    ────────────────────────────────────────────────────────────── */
 function initCursor() {
-  const cursor = document.getElementById('cursor');
+  const cursor = document.getElementById("cursor");
   // Skip on touch-only devices (CSS already restores default cursor)
-  if (!cursor || window.matchMedia('(hover: none)').matches) return;
+  if (!cursor || window.matchMedia("(hover: none)").matches) return;
 
   /* Track exact mouse position — crosshairs don't lag behind */
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
   });
 
   /* Hide when pointer leaves the viewport */
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
   });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
   });
 
   /* Expand crosshair lines when hovering interactive elements.
      Event delegation — works for any dynamically added elements too. */
-  document.addEventListener('mouseover', (e) => {
-    if (e.target.closest('a, button, .cert-highlight, .cert-item, .project-feature, [role="button"]')) {
-      cursor.classList.add('cursor-expanded');
+  document.addEventListener("mouseover", (e) => {
+    if (
+      e.target.closest(
+        'a, button, .cert-highlight, .cert-item, .project-feature, [role="button"]',
+      )
+    ) {
+      cursor.classList.add("cursor-expanded");
     }
   });
 
-  document.addEventListener('mouseout', (e) => {
-    if (e.target.closest('a, button, .cert-highlight, .cert-item, .project-feature, [role="button"]')) {
-      cursor.classList.remove('cursor-expanded');
+  document.addEventListener("mouseout", (e) => {
+    if (
+      e.target.closest(
+        'a, button, .cert-highlight, .cert-item, .project-feature, [role="button"]',
+      )
+    ) {
+      cursor.classList.remove("cursor-expanded");
     }
   });
 
   /* Compress briefly on click for tactile feel */
-  document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
-  document.addEventListener('mouseup',   () => cursor.classList.remove('cursor-click'));
+  document.addEventListener("mousedown", () =>
+    cursor.classList.add("cursor-click"),
+  );
+  document.addEventListener("mouseup", () =>
+    cursor.classList.remove("cursor-click"),
+  );
 }
 
 /* ──────────────────────────────────────────────────────────────
    NAVBAR — scroll class
    ────────────────────────────────────────────────────────────── */
 function initNavScroll() {
-  const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById("navbar");
   if (!navbar) return;
 
   const onScroll = () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    navbar.classList.toggle("scrolled", window.scrollY > 40);
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
   onScroll(); // run once on load
 }
 
@@ -161,41 +179,41 @@ function initNavScroll() {
    MOBILE MENU
    ────────────────────────────────────────────────────────────── */
 function initMobileMenu() {
-  const btn   = document.getElementById('mobileMenuBtn');
-  const menu  = document.getElementById('mobileMenu');
-  const close = document.getElementById('mobileMenuClose');
+  const btn = document.getElementById("mobileMenuBtn");
+  const menu = document.getElementById("mobileMenu");
+  const close = document.getElementById("mobileMenuClose");
   if (!btn || !menu) return;
 
   function openMenu() {
-    menu.classList.add('open');
-    menu.removeAttribute('aria-hidden');
-    btn.setAttribute('aria-expanded', 'true');
-    btn.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    menu.classList.add("open");
+    menu.removeAttribute("aria-hidden");
+    btn.setAttribute("aria-expanded", "true");
+    btn.classList.add("open");
+    document.body.style.overflow = "hidden";
   }
 
   function closeMenu() {
-    menu.classList.remove('open');
-    menu.setAttribute('aria-hidden', 'true');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.classList.remove('open');
-    document.body.style.overflow = '';
+    menu.classList.remove("open");
+    menu.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
+    btn.classList.remove("open");
+    document.body.style.overflow = "";
   }
 
-  btn.addEventListener('click', () => {
-    menu.classList.contains('open') ? closeMenu() : openMenu();
+  btn.addEventListener("click", () => {
+    menu.classList.contains("open") ? closeMenu() : openMenu();
   });
 
-  if (close) close.addEventListener('click', closeMenu);
+  if (close) close.addEventListener("click", closeMenu);
 
   // Close on any mobile nav link click
-  menu.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', closeMenu);
+  menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 
   // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("open")) closeMenu();
   });
 }
 
@@ -203,57 +221,59 @@ function initMobileMenu() {
    CERTIFICATE MODAL
    ────────────────────────────────────────────────────────────── */
 function initModal() {
-  const modal    = document.getElementById('certificateModal');
-  const modalImg = document.getElementById('modalImage');
-  const closeBtn = document.getElementById('modalClose');
+  const modal = document.getElementById("certificateModal");
+  const modalImg = document.getElementById("modalImage");
+  const closeBtn = document.getElementById("modalClose");
   if (!modal || !modalImg) return;
 
   function openModal(src, alt) {
     modalImg.src = src;
-    modalImg.alt = alt || 'Certificate';
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
+    modalImg.alt = alt || "Certificate";
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    modal.classList.remove('show');
-    document.body.style.overflow = '';
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
     // Clear src after transition so image doesn't flash on next open
-    setTimeout(() => { modalImg.src = ''; }, 300);
+    setTimeout(() => {
+      modalImg.src = "";
+    }, 300);
   }
 
   // Cert highlight (award block)
-  document.querySelectorAll('.cert-highlight').forEach(el => {
-    el.addEventListener('click', () => {
-      const img = el.querySelector('.cert-thumb');
+  document.querySelectorAll(".cert-highlight").forEach((el) => {
+    el.addEventListener("click", () => {
+      const img = el.querySelector(".cert-thumb");
       if (img) openModal(img.src, img.alt);
     });
   });
 
   // Individual cert items
-  document.querySelectorAll('.cert-item').forEach(el => {
-    el.addEventListener('click', () => {
-      const img = el.querySelector('.cert-item-img');
+  document.querySelectorAll(".cert-item").forEach((el) => {
+    el.addEventListener("click", () => {
+      const img = el.querySelector(".cert-item-img");
       if (img) openModal(img.src, img.alt);
     });
   });
 
   // Close via button or backdrop click
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
 
   // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("show")) closeModal();
   });
 }
 
 /* ──────────────────────────────────────────────────────────────
    INIT — run everything once the DOM is ready
    ────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Each init is isolated — one failure cannot abort the rest
   [
     initTerrain,
@@ -266,8 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatBars,
     initScanLines,
     initNavActive,
-  ].forEach(fn => {
-    try { fn(); } catch (err) { console.error(`[init] ${fn.name} failed:`, err); }
+  ].forEach((fn) => {
+    try {
+      fn();
+    } catch (err) {
+      console.error(`[init] ${fn.name} failed:`, err);
+    }
   });
 });
 
@@ -277,15 +301,15 @@ document.addEventListener('DOMContentLoaded', () => {
    to the target (while screen is black), then fades back in.
    ────────────────────────────────────────────────────────────── */
 function initFadeTransitions() {
-  const overlay = document.getElementById('fade-overlay');
+  const overlay = document.getElementById("fade-overlay");
   if (!overlay) return;
 
   const FADE_MS = 340; // must match CSS transition duration on #fade-overlay
 
-  document.querySelectorAll('[data-scroll]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
+  document.querySelectorAll("[data-scroll]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
 
       const target = document.querySelector(href);
       if (!target) return;
@@ -293,17 +317,17 @@ function initFadeTransitions() {
       e.preventDefault();
 
       // 1 — fade to black
-      overlay.classList.add('fade-in');
+      overlay.classList.add("fade-in");
 
       setTimeout(() => {
         // 2 — scroll while screen is black (instant, no jank visible)
-        target.scrollIntoView({ behavior: 'instant', block: 'start' });
+        target.scrollIntoView({ behavior: "instant", block: "start" });
 
         // Small buffer so layout settles before revealing
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             // 3 — fade back in
-            overlay.classList.remove('fade-in');
+            overlay.classList.remove("fade-in");
           });
         });
       }, FADE_MS);
@@ -320,39 +344,42 @@ function initFadeTransitions() {
    they don't all fire at exactly the same moment.
    ────────────────────────────────────────────────────────────── */
 function initGlitchIn() {
-  const targets = document.querySelectorAll('.glitch-target');
+  const targets = document.querySelectorAll(".glitch-target");
   if (!targets.length) return;
 
   // Pre-compute stagger delays: siblings share a parent, each gets
   // +90ms per index so they cascade visually.
   const seen = new Set();
-  targets.forEach(el => {
+  targets.forEach((el) => {
     const parent = el.parentElement;
     if (seen.has(parent)) return;
     seen.add(parent);
 
-    const kids = Array.from(parent.querySelectorAll(':scope > .glitch-target'));
+    const kids = Array.from(parent.querySelectorAll(":scope > .glitch-target"));
     kids.forEach((child, i) => {
       child._glitchDelay = i * 90;
     });
   });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      observer.unobserve(el); // animate once only
-      setTimeout(
-        () => el.classList.add('glitch-visible'),
-        el._glitchDelay || 0
-      );
-    });
-  }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px',
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        observer.unobserve(el); // animate once only
+        setTimeout(
+          () => el.classList.add("glitch-visible"),
+          el._glitchDelay || 0,
+        );
+      });
+    },
+    {
+      threshold: 0.08,
+      rootMargin: "0px 0px -40px 0px",
+    },
+  );
 
-  targets.forEach(el => observer.observe(el));
+  targets.forEach((el) => observer.observe(el));
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -362,24 +389,30 @@ function initGlitchIn() {
    to its data-value percentage with a staggered delay.
    ────────────────────────────────────────────────────────────── */
 function initStatBars() {
-  const container = document.querySelector('.edu-stats');
-  const bars = document.querySelectorAll('.stat-bar');
+  const container = document.querySelector(".edu-stats");
+  const bars = document.querySelectorAll(".stat-bar");
   if (!container || !bars.length) return;
 
   let fired = false;
 
-  const observer = new IntersectionObserver((entries) => {
-    if (fired || !entries[0].isIntersecting) return;
-    fired = true;
-    observer.disconnect();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (fired || !entries[0].isIntersecting) return;
+      fired = true;
+      observer.disconnect();
 
-    bars.forEach((bar, i) => {
-      const value = parseFloat(bar.dataset.value) || 0;
-      setTimeout(() => {
-        bar.style.width = value + '%';
-      }, 200 + i * 140); // initial pause + stagger per bar
-    });
-  }, { threshold: 0.35 });
+      bars.forEach((bar, i) => {
+        const value = parseFloat(bar.dataset.value) || 0;
+        setTimeout(
+          () => {
+            bar.style.width = value + "%";
+          },
+          200 + i * 140,
+        ); // initial pause + stagger per bar
+      });
+    },
+    { threshold: 0.35 },
+  );
 
   observer.observe(container);
 }
@@ -391,14 +424,14 @@ function initStatBars() {
    an object. Resets on mouseleave so it can fire again.
    ────────────────────────────────────────────────────────────── */
 function initScanLines() {
-  document.querySelectorAll('.project-feature').forEach(feature => {
-    const scanLine = feature.querySelector('.project-scan-line');
-    const imgWrap  = feature.querySelector('.project-img-wrap');
+  document.querySelectorAll(".project-feature").forEach((feature) => {
+    const scanLine = feature.querySelector(".project-scan-line");
+    const imgWrap = feature.querySelector(".project-img-wrap");
     if (!scanLine || !imgWrap) return;
 
     let sweeping = false;
 
-    feature.addEventListener('mouseenter', () => {
+    feature.addEventListener("mouseenter", () => {
       if (sweeping) return;
       sweeping = true;
 
@@ -406,24 +439,24 @@ function initScanLines() {
       const DURATION = 580; // ms for the full sweep
 
       // Snap to top, make visible
-      scanLine.style.transition = 'none';
-      scanLine.style.transform  = 'translateY(0)';
-      scanLine.style.opacity    = '1';
+      scanLine.style.transition = "none";
+      scanLine.style.transform = "translateY(0)";
+      scanLine.style.opacity = "1";
 
       // One rAF to let the reset paint, then start the sweep
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           scanLine.style.transition = `transform ${DURATION}ms linear`;
-          scanLine.style.transform  = `translateY(${travelPx}px)`;
+          scanLine.style.transform = `translateY(${travelPx}px)`;
 
           setTimeout(() => {
             // Fade out, reset silently so it's ready for next hover
-            scanLine.style.transition = 'opacity 0.15s ease';
-            scanLine.style.opacity    = '0';
+            scanLine.style.transition = "opacity 0.15s ease";
+            scanLine.style.opacity = "0";
 
             setTimeout(() => {
-              scanLine.style.transition = 'none';
-              scanLine.style.transform  = 'translateY(0)';
+              scanLine.style.transition = "none";
+              scanLine.style.transform = "translateY(0)";
               sweeping = false;
             }, 160);
           }, DURATION);
@@ -441,34 +474,37 @@ function initScanLines() {
    switches right when the section reaches the nav, not before.
    ────────────────────────────────────────────────────────────── */
 function initNavActive() {
-  const sections = document.querySelectorAll('section[id], footer[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll("section[id], footer[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
   if (!sections.length || !navLinks.length) return;
 
   // Map section id → nav link element for O(1) lookup
   const linkMap = {};
-  navLinks.forEach(link => {
-    const id = link.getAttribute('href')?.replace('#', '');
+  navLinks.forEach((link) => {
+    const id = link.getAttribute("href")?.replace("#", "");
     if (id) linkMap[id] = link;
   });
 
   function setActive(id) {
-    navLinks.forEach(l => l.classList.remove('active'));
-    if (linkMap[id]) linkMap[id].classList.add('active');
+    navLinks.forEach((l) => l.classList.remove("active"));
+    if (linkMap[id]) linkMap[id].classList.add("active");
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setActive(entry.target.id);
-      }
-    });
-  }, {
-    // Shrink the observable area: top edge offset = nav height,
-    // bottom threshold = middle of the viewport
-    rootMargin: '-68px 0px -45% 0px',
-    threshold: 0,
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    },
+    {
+      // Shrink the observable area: top edge offset = nav height,
+      // bottom threshold = middle of the viewport
+      rootMargin: "-68px 0px -45% 0px",
+      threshold: 0,
+    },
+  );
 
-  sections.forEach(s => observer.observe(s));
+  sections.forEach((s) => observer.observe(s));
 }

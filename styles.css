@@ -443,6 +443,72 @@ ul  { list-style: none; }
 }
 
 
+.btn-rpg {
+  border-color: #ff6600;
+  color: #ff9944;
+}
+
+.btn-rpg:hover {
+  border-color: #ff9944;
+  color: #ffbb77;
+  box-shadow: 0 0 18px rgba(255, 102, 0, 0.45);
+}
+
+.rpg-btn-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.rpg-nudge {
+  position: absolute;
+  top: -38px;
+  right: -40px;
+  width: 100px;
+  height: 70px;
+  pointer-events: none;
+  animation: nudgeFloat 2s ease-in-out infinite;
+}
+
+.rpg-nudge-text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(32deg);
+  transform-origin: center center;
+  font-size: 13px;
+  font-family: 'Exo 2', sans-serif;
+  color: #ff9944;
+  font-style: italic;
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+}
+
+/*
+  Arrows are absolutely positioned to originate from left end, middle,
+  and right end of the (rotated) text, all converging lower-left toward the button.
+  Positive rotate() on ↓ tilts the arrowhead toward the left.
+  Left end is closest to target → least lean. Right end → most lean.
+*/
+.rpg-arrow {
+  position: absolute;
+  font-size: 16px;
+  color: #ff9944;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+  opacity: 0.9;
+}
+
+.rpg-arrow--l { top: 20px; left:  6px; transform: rotate(22deg); }
+.rpg-arrow--m { top: 32px; left: 44px; transform: rotate(36deg); }
+.rpg-arrow--r { top: 44px; right: 4px; transform: rotate(50deg); }
+
+@keyframes nudgeFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+
 /* ══════════════════════════════════════════════════════════════
    SHARED SECTION STYLES
    ══════════════════════════════════════════════════════════════ */
